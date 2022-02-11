@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Instructor\InstructorController;
 
@@ -28,14 +29,8 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 
-	 Route::get('map', function () {return view('pages.maps');})->name('map');
-	 Route::get('icons', function () {return view('pages.icons');})->name('icons'); 
-	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+	// Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
+
 });
 
 
@@ -43,12 +38,19 @@ Route::prefix('user')->name('user.')->group(function(){
 	Route::middleware(['guest:web', 'prevent-back-history'])->group(function(){
 		Route::view('/login','front.user.auth.login')->name('login');
 		Route::view('/signup', 'front.user.auth.signup')->name('signup');
-		Route::post('/create',[UserController::class, 'create'])->name('create');
-		Route::post('/check',[UserController::class, 'check'])->name('check');
+		Route::post('/create',[AuthController::class, 'create'])->name('create');
+		Route::post('/check',[AuthController::class, 'check'])->name('check');
 	});
 	Route::middleware(['auth:web', 'prevent-back-history'])->group(function(){
 		Route::view('/home', 'front.user.home')->name('home');
-		Route::post('/logout', [UserController::class,'logout'])->name('logout');
+		Route::post('/logout', [AuthController::class,'logout'])->name('logout');
+
+
+		Route::get('profile', [ProfileController::class,'edit'])->name('profile');
+		Route::put('profile', [ProfileController::class, 'update'])->name('updateprofile');
+		Route::put('profile/password', [ProfileController::class, 'password'])->name('password');
+
+		// Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\User\ProfileController@password']);
 	});
 });
 

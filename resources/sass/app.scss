@@ -1,8 +1,26 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Default
+@import 'base/typography';
+@import 'front/variables';
+@import 'front/mixins';
+@import 'front/overlay';
+@import 'front/common';
+@import 'front/color';
+
+
+// Homepage 1
+@import 'front/headerMenu';
+@import 'front/themesections';
+@import 'front/about';
+@import 'front/footer';
+
+// Default Element Page
+@import 'front/extend';
+@import 'front/elements';
+// Pages
+@import 'front/home';
