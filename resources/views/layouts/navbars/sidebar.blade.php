@@ -6,7 +6,8 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            LMS TRAIN
+            <!-- <img src="{{ asset('argon') }}/img/brand/logo.png" style="width: 400px;height:600px;" class="navbar-brand-img" alt="..."> -->
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -79,18 +80,18 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                    <a class="nav-link active" href="{{ route('admin.dashboard') }}">
+                        <i class="ni ni-tv-2 text-green"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                    <i class="fas fa-users text-primary"></i> {{ __('Instructors') }}
+                    <i class="fas fa-users text-green"></i> {{ __('Instructors') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#student-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
-                        <i class="ni ni-hat-3 text-primary"></i>
+                        <i class="ni ni-hat-3 text-green"></i>
                         <span class="nav-link-text">{{ __('Students') }}</span>
                     </a>
 
@@ -116,14 +117,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#course-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
-                        <i class="ni ni-books text-primary"></i> 
+                        <i class="ni ni-books text-green"></i> 
                         <span class="nav-link-text">{{ __('Courses Management') }}</span>
                     </a>
 
                     <div class="collapse" id="course-nav">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{route('admin.categories')}}">
                                     {{ __('Manage Categories') }}
                                 </a>
                             </li>
@@ -152,12 +153,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.profile') }}">
-                        <i class="ni ni-circle-08 text-primary"></i> {{ __('Account') }}
+                        <i class="ni ni-circle-08 text-green"></i> {{ __('Account') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.profile') }}">
-                    <i class="fas fa-pencil-alt text-primary"></i> {{ __('Blog') }}
+                    <i class="fas fa-pencil-alt text-green"></i> {{ __('Blog') }}
                     </a>
                 </li>
          

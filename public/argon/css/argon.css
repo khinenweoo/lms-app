@@ -1921,16 +1921,12 @@ pre code
 .table td
 {
     padding: 1rem;
-
     vertical-align: top;
-
-    border-top: 1px solid #e9ecef;
 }
 .table thead th
 {
     vertical-align: bottom;
-
-    border-bottom: 2px solid #e9ecef;
+    /* border-bottom: 2px solid #e9ecef; */
 }
 .table tbody + tbody
 {
@@ -2212,7 +2208,8 @@ pre code
 {
     color: #8898aa;
     border-color: #e9ecef; 
-    background-color: #f6f9fc;
+    /* background-color: #f6f9fc; */
+    background-color: #f5f5f5;
 }
 
 .table-dark
@@ -2909,11 +2906,9 @@ textarea.form-control
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.5;
-
     display: inline-block;
-
     padding: .625rem 1.25rem;
-
+    border-radius: 30px;
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
@@ -15588,7 +15583,6 @@ button.section-darker:focus
 .floating
 {
     animation: floating 3s ease infinite;
-
     will-change: transform;
 }
 .floating:hover
@@ -16818,13 +16812,11 @@ a.text-lighter:focus
 .btn
 {
     font-size: .875rem;
-
     position: relative;
-
     transition: all .15s ease;
     letter-spacing: .025em;
     text-transform: none;
-
+    border-radius: 30px;
     will-change: transform;
 }
 .btn:hover
@@ -20861,15 +20853,12 @@ textarea[resize='horizontal']
 
 .table thead th
 {
-    font-size: .65rem;
-
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-
-    letter-spacing: 1px;
+    font-size: .75rem;
+    padding-top: .85rem;
+    padding-bottom: .85rem;
+    letter-spacing: .85px;
     text-transform: uppercase;
-
-    border-bottom: 1px solid #e9ecef;
+    /* border-bottom: 1px solid #e9ecef; */
 }
 
 .table th
@@ -20888,7 +20877,6 @@ textarea[resize='horizontal']
 .table th
 {
     font-size: .8125rem;
-
     white-space: nowrap;
 }
 
@@ -20906,8 +20894,9 @@ textarea[resize='horizontal']
 
 .table .thead-light th
 {
-    color: #8898aa; 
-    background-color: #f6f9fc;
+    color: #666; 
+    /* background-color: #f6f9fc; */
+    background-color: #f5f5f5;
 }
 
 .table-hover tr

@@ -14,6 +14,7 @@
                 </div>
             </div>
         </form>
+
         <!-- User -->
         @if(Auth::guard('web')->check())
         <ul class="navbar-nav align-items-center d-none d-md-flex">
