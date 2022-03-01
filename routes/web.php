@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/courses', 'courses')->name('courses');
+Route::view('/student_dashboard', 'student_dashboard')->name('student_dashboard');
+Route::view('/course-details', 'course-details')->name('course-details');
+
 Auth::routes();
 
 
