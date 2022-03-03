@@ -11,7 +11,8 @@
         <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
 
         <!-- Font Awesome Icons -->
-        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        <link href="{{ asset('assets') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
 
         <!-- Additional CSS Files -->
         <link type="text/css" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
