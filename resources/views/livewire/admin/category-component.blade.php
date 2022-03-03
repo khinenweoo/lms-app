@@ -28,9 +28,14 @@
     <div class="content-body" style="background-color:#fafdfb;">
         <div class="container-fluid mt--7">
             <div class="row">
+               
+       
+                <!-- Livewire Update Component -->
+                @include('livewire.admin.category.update')
+            
                 <!-- Livewire Store Component -->
-
                 @include('livewire.admin.category.store')
+        
 
                 @if (session()->has('message'))
                         <div class="alert alert-success" role="alert">
@@ -97,6 +102,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Name</th>
+                                        <th scope="col">Icon</th>
                                         <th scope="col">Slug</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Created Date</th>
@@ -108,11 +114,23 @@
                                     @foreach ($categories as $category)
                                     <tr>
                                         <td >{{ $category->name() }}</td>
+                                  
+                                        <td ><img src="{{ asset('storage/categories/'.$category->icon) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
                                         <td >{{ $category->slug() }}</td>
-                                        <td class="">{{ $category->status() }}</td>
+                                        <td class="">
+                                            <label class="custom-toggle">
+                                            <input type="checkbox" {{$category->status === 1? 'checked': ''}} disabled >
+                                            <span class="custom-toggle-slider rounded-circle"></span>
+                                            </label>
+                                        </td>
                                         <td class="">{{ $category->createdAt() }}</td>
                                         <td>
-                                            Action Buttons
+                                        <button data-toggle="modal" data-target="#modal-update" wire:click="edit({{ $category->id }})" type="button" data-toggle="tooltip" data-placement="top" title="Edit category" class="btn btn-primary btn-sm" style="border-radius:14px;padding:.35rem .5rem;">
+                                            <i class="ni ni-settings" style="font-size: 14px;"></i>                                        
+                                        </button>
+                                        <button wire:click="delete({{ $category->id }})" type="button" title="Delete category" class="btn btn-danger btn-sm" style="border-radius:14px;padding:.25rem .4rem;">
+                                            <i class="ni ni-fat-remove" style="font-size: 20px;></i>                               
+                                        </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -123,7 +141,6 @@
                     </div>
                 </div>
                 <div class="pagination">
-                    
                     {{ $categories->links() }}
                 </div>
             </div>
@@ -135,6 +152,9 @@
 <script>
             window.livewire.on('categoryCreateModal', () => {
                 $('#modal-create').modal('hide');
+            });
+            window.livewire.on('categoryUpdateModal', () => {
+                $('#modal-update').modal('hide');
             });
 </script>
 @endpush

@@ -6,8 +6,8 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
+            <img src="{{ asset('assets') }}/img/brand/logo.jpeg" style="width: 80px;max-width:100%;" class="navbar-brand-img" alt="">
             LMS TRAIN
-            <!-- <img src="{{ asset('argon') }}/img/brand/logo.png" style="width: 400px;height:600px;" class="navbar-brand-img" alt="..."> -->
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -15,7 +15,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                        <img alt="Image placeholder" src="{{ asset('assets') }}/img/dashboard/admin-profile.png">
                         </span>
                     </div>
                 </a>
@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/blue.png">
+                            <img src="{{ asset('assets') }}/img/brand/logo.jpeg">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
