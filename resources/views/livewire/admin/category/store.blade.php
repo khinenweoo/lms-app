@@ -1,6 +1,4 @@
 
-
-
 <!-- Modal -->
 <div wire:ignore.self class="modal fade" id="modal-create" tabindex="-1" role="dialog" aria-labelledby="modal-create" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -22,7 +20,7 @@
        
                     <div class="form-group mb-3">
                         <label for="icon">Icon</label>
-                        <input wire:model="icon" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" id="icon">
+                        <input wire:model="icon" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" id="icon" value="{{ $icon ? '$icon': '' }}">
                         @error('icon') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group pt-3">

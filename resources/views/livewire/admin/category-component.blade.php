@@ -28,13 +28,13 @@
     <div class="content-body" style="background-color:#fafdfb;">
         <div class="container-fluid mt--7">
             <div class="row">
-               
+                <!-- Livewire Store Component -->
+                @include('livewire.admin.category.store')
        
                 <!-- Livewire Update Component -->
                 @include('livewire.admin.category.update')
             
-                <!-- Livewire Store Component -->
-                @include('livewire.admin.category.store')
+
         
 
                 @if (session()->has('message'))
@@ -125,12 +125,12 @@
                                         </td>
                                         <td class="">{{ $category->createdAt() }}</td>
                                         <td>
-                                        <button data-toggle="modal" data-target="#modal-update" wire:click="edit({{ $category->id }})" type="button" data-toggle="tooltip" data-placement="top" title="Edit category" class="btn btn-primary btn-sm" style="border-radius:14px;padding:.35rem .5rem;">
-                                            <i class="ni ni-settings" style="font-size: 14px;"></i>                                        
-                                        </button>
-                                        <button wire:click="delete({{ $category->id }})" type="button" title="Delete category" class="btn btn-danger btn-sm" style="border-radius:14px;padding:.25rem .4rem;">
-                                            <i class="ni ni-fat-remove" style="font-size: 20px;></i>                               
-                                        </button>
+                                            <button type="button" wire:click.prevent="edit({{ $category->id }})" data-toggle="modal" data-target="#modal-update" class="btn btn-primary btn-sm" title="Edit Category" style="border-radius:14px;padding:.35rem .5rem;">
+                                            <i class="ni ni-settings" style="font-size: 14px;"></i>  
+                                            </button>
+                                            <button type="button" wire:click.prevent="confirmDelete({{ $category->id }})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Category" style="border-radius:14px;padding:.35rem .5rem;">
+                                            <i class="ni ni-fat-remove" style="font-size: 20px;""></i>  
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -138,11 +138,32 @@
                             </table>
 
                         </div>
+
                     </div>
                 </div>
                 <div class="pagination">
                     {{ $categories->links() }}
                 </div>
+                <!-- Delete Confirmation Modal -->       
+                    <div wire:ignore.self class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true close-btn">×</span>
+                                    </button>
+                                </div>
+                            <div class="modal-body">
+                                    <p>Are you sure you want to delete? Category contains data.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                                    <button type="button" wire:click.prevent="delete()" class="btn btn-danger close-modal" data-dismiss="modal">Yes, Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- end Modal -->
             </div>
         </div>
     </div>

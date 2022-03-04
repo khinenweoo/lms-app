@@ -6,7 +6,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Course Category</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Course Category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -33,7 +33,7 @@
                             <img src="{{ asset('storage/categories/'.$icon) }}" alt="" style="max-width:100%;width:60px;">
                         @endif
 
-                        <input wire:model="updatedIcon" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" id="icon" placeholder="{{ asset('storage/categories/'.$icon) }}">
+                        <input wire:model="updatedIcon" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" id="icon">
                         @error('icon') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group pt-3">
@@ -44,9 +44,8 @@
                     <!-- Status -->
                     <div class="form-group mb-3 {{ $errors->has('status') ? ' has-danger' : '' }}">
                             <label for="status">Status</label>
-                            <select wire:model="status" class="form-control {{ $errors->has('status') ? ' is-invalid' : '' }}">
-                                <span></span>
-                                <option value="1" selected>Enabled</option>
+                            <select wire:model="status" name="enabled" class="form-control {{ $errors->has('status') ? ' is-invalid' : '' }}">
+                                <option value="1" selected="selected">Enabled</option>
                                 <option value="0">Disabled</option>
                             </select>
                             @error('status') <span class="text-danger error">{{ $message }}</span> @enderror
@@ -54,8 +53,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-success close-modal">Update changes</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-success close-modal" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>

@@ -29,6 +29,7 @@ class CategoryComponent extends Component
     public $status;
     public $updatedIcon = null;
     public $updateMode = false;
+    public $deleteId;
 
     public function render()
     {
@@ -36,6 +37,11 @@ class CategoryComponent extends Component
         return view('livewire.admin.category-component', [
             'categories' => $this->categories,
         ])->layout('layouts.livewirebase');
+    }
+
+    public function mount()
+    {
+        $this->resetInput();
     }
 
     public function fetchCategories()
@@ -92,6 +98,7 @@ class CategoryComponent extends Component
      */
     public function edit($id)
     {
+        $this->updateMode = true;
         $category = Category::where('id', $id)->first();
         $this->category_id = $id;
         $this->name = $category->name;
@@ -99,10 +106,12 @@ class CategoryComponent extends Component
         $this->icon = $category->icon;
         $this->description = $category->description;
         $this->status = $category->status;
-
-        $this->updateMode = true;
     }
-
+    public function cancel()
+    {
+        $this->updateMode = false;
+        $this->resetInput();
+    }
     /**
      * Update the Category resource in storage.
      *
@@ -128,17 +137,25 @@ class CategoryComponent extends Component
                 'description' => $this->description,
                 'status' => $this->status,
             ]);
-
+            
+            $this->updateMode = false;
             session()->flash('message', 'Category updated.');
             $this->resetInput();
             $this->emit('categoryUpdateModal');
         }
     }
 
-    public function delete($id)
+    public function confirmDelete($id)
     {
-        Category::find($id)->delete();
-        session()->flash('message', 'Category Deleted Successfully.');
+        $this->deleteId = $id;
+    }
+
+    public function delete()
+    {
+        if ($this->deleteId) {
+            Category::find($this->deleteId)->delete();
+            session()->flash('message', 'Category deleted.');
+        }
     }
 
     public function resetInput()
