@@ -10,7 +10,6 @@ class Category extends Model
 {
     use SoftDeletes, HasFactory;
 
-
     const TABLE = 'categories';
     protected $table = self::TABLE;
     

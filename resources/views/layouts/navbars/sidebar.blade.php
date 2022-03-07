@@ -85,9 +85,24 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="#instructor-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-instructor">
                     <i class="fas fa-users text-green"></i> {{ __('Instructors') }}
                     </a>
+
+                    <div class="collapse" id="instructor-nav">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.instructors') }}">
+                                    {{ __('All Instructors') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.instructor.add')}}">
+                                    {{ __('Add Instructor') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#student-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">

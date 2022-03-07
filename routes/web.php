@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Instructor\InstructorController;
 
 use App\Http\Livewire\Admin\CategoryComponent;
+use App\Http\Livewire\Admin\InstructorList;
+use App\Http\Livewire\Admin\AddInstructor;
 
 
 /*
@@ -65,8 +67,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
 	Route::middleware(['auth:admin', 'prevent-back-history'])->group(function(){
 		Route::view('/dashboard', 'back.admin.dashboard')->name('dashboard');
 		Route::post('/logout', [AdminController::class,'logout'])->name('logout');
-		
+
+		 /*--------------- CATEGORIES ------------------*/
 		Route::get('/categories', CategoryComponent::class)->name('categories');
+
+		 /*--------------- INSTRUCTORS ------------------*/
+		Route::get('/instructors', InstructorList::class)->name('instructors');
+		Route::get('/instructor/add', AddInstructor::class)->name('instructor.add');
 	});
 });
 

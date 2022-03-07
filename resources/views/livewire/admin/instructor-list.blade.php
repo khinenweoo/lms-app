@@ -6,15 +6,18 @@
                     <div class="card-header p-3 border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="text-default mb-0">Course Categories</h3>
+                                <h3 class="text-default mb-0">Instructor List</h3>
                             </div>
                             <div class="col">
                                 <div class="section-header-breadcrumb d-flex justify-content-end" style="margin-left:auto;">
                                     <div class="breadcrumb-item">
-                                        <a href="" style="font-size:12px;color:#828bb2;">Dashboard</a>
+                                        <a href="{{route('admin.dashboard')}}" style="font-size:12px;color:#828bb2;">Dashboard</a>
                                     </div>
                                     <div class="breadcrumb-item">
-                                        <a href="" class="text-default" style="font-size:12px;">Course Categories</a>
+                                        <a href="#" style="font-size:12px;color:#828bb2;">Instructors</a>
+                                    </div>
+                                    <div class="breadcrumb-item">
+                                        <a href="{{route('admin.instructors')}}" class="text-default" style="font-size:12px;">Instructor List</a>
                                     </div>
                                 </div>
                             </div>
@@ -28,12 +31,7 @@
     <div class="content-body" style="background-color:#fafdfb;">
         <div class="container-fluid mt--7">
             <div class="row">
-                <!-- Livewire Store Component -->
-                @include('livewire.admin.category.store')
-       
-                <!-- Livewire Update Component -->
-                @include('livewire.admin.category.update')
-            
+
                 @if (session()->has('message'))
                         <div class="alert alert-success" role="alert">
                             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -47,9 +45,9 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-md-3 col-12">
-                                    <button class="btn btn-icon btn-3 btn-success" type="button" data-toggle="modal" data-target="#modal-create">
+                                    <button class="btn btn-icon btn-3 btn-success" type="button">
                                         <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>                             
-                                        <span class="btn-inner--text">Add Category</span>
+                                        <span class="btn-inner--text">Add Instructor</span>
                                     </button>
                                 </div>
                                 <div class="col-md-9 col-12">
@@ -69,7 +67,9 @@
                                                 <select wire:model="orderBy" id="orderBy" class="form-control">
                                                     <option value="id">ID</option>
                                                     <option value="name">Name</option>
-                                                    <option value="created_at">Created At</option>
+                                                    <option value="email">Email Address</option>
+                                                    <option value="dateofbirth">Date of Birth</option>
+                                                    <option value="phone">Phone</option>
                                                 </select>
                                             </div>
                                             <!-- Order Asc -->
@@ -98,38 +98,22 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Icon</th>
-                                        <th scope="col">Slug</th>
+                                        <th scope="col">Email</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Created Date</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                            
-                                    @foreach ($categories as $category)
-                                    <tr>
-                                        <td >{{ $category->name() }}</td>
-                                  
-                                        <td ><img src="{{ asset('storage/categories/'.$category->icon) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
-                                        <td >{{ $category->slug() }}</td>
-                                        <td class="">
-                                            <label class="custom-toggle">
-                                            <input type="checkbox" {{$category->status === 1? 'checked': ''}} disabled >
-                                            <span class="custom-toggle-slider rounded-circle"></span>
-                                            </label>
-                                        </td>
-                                        <td class="">{{ $category->createdAt() }}</td>
-                                        <td>
-                                            <button type="button" wire:click.prevent="edit({{ $category->id }})" data-toggle="modal" data-target="#modal-update" class="btn btn-primary btn-sm" title="Edit Category" style="border-radius:14px;padding:.35rem .5rem;">
-                                            <i class="ni ni-settings" style="font-size: 14px;"></i>  
-                                            </button>
-                                            <button type="button" wire:click.prevent="confirmDelete({{ $category->id }})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Category" style="border-radius:14px;padding:.35rem .5rem;">
-                                            <i class="ni ni-fat-remove" style="font-size: 20px;""></i>  
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    @foreach ($instructors as $instructor)
+                                        <tr>
+                                            <td ><img src="{{ asset('storage/instructors/'.$instructor->photo()) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
+                                            <td>{{ $instructor->name() }}</td>
+                                            <td>{{ $instructor->email() }}</td>
+                                            <td>{{ $instructor->status() }}</td>
+                                            <td>Action buttons</td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -139,40 +123,10 @@
                     </div>
                 </div>
                 <div class="pagination">
-                    {{ $categories->links() }}
+                    
                 </div>
-                <!-- Delete Confirmation Modal -->       
-                    <div wire:ignore.self class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true close-btn">×</span>
-                                    </button>
-                                </div>
-                            <div class="modal-body">
-                                    <p>Are you sure you want to delete? Category contains data.</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                                    <button type="button" wire:click.prevent="delete()" class="btn btn-danger close-modal" data-dismiss="modal">Yes, Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- end Modal -->
+
             </div>
         </div>
     </div>
 </div>
-
-@push('child-scripts')
-<script>
-            window.livewire.on('categoryCreateModal', () => {
-                $('#modal-create').modal('hide');
-            });
-            window.livewire.on('categoryUpdateModal', () => {
-                $('#modal-update').modal('hide');
-            });
-</script>
-@endpush

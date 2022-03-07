@@ -20,6 +20,17 @@ class InstructorsTableSeeder extends Seeder
             'email' => 'instructor@lms.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret123'),
+            'photo' => 'default.jpg',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('instructors')->insert([
+            'name' => 'AEG Instructor',
+            'email' => 'aeginstructor@lms.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret123'),
+            'photo' => 'default.jpg',
             'created_at' => now(),
             'updated_at' => now()
         ]);

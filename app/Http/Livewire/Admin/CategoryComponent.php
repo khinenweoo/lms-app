@@ -58,7 +58,6 @@ class CategoryComponent extends Component
             'name' => ['required', 'unique:categories,name'],
             'icon' => ['nullable', 'image', 'mimes:png','max:3000'],
             'description' => ['string'],
-            'status' => ['required'],
         ]);
 
         if(isset($this->icon)) {
