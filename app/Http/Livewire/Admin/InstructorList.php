@@ -12,12 +12,13 @@ class InstructorList extends Component
     use WithPagination;
     use WithFileUploads;
     protected $paginationTheme = 'bootstrap';
-    
+
     public $perPage = 10;
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = 'asc';
     protected $instructors;
+
 
     public function render()
     {
@@ -36,4 +37,18 @@ class InstructorList extends Component
 
         return $instructors;
     }
+
+    public function confirmDelete($id)
+    {
+        $this->deleteId = $id;
+    }
+
+    public function delete()
+    {
+        if ($this->deleteId) {
+            Instructor::find($this->deleteId)->delete();
+            session()->flash('message', 'Instructor deleted.');
+        }
+    }
+
 }

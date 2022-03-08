@@ -35,6 +35,7 @@ class AddInstructor extends Component
             'facebook_link' => ['nullable', 'string'],
             'twitter_link' => ['nullable', 'string'],
             'linkedin_link' => ['nullable', 'string'],
+            'status' => ['in:0,1']
         ]);
 
         $this->setDateFormat($this->dateofbirth);

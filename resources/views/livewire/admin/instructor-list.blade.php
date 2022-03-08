@@ -31,7 +31,6 @@
     <div class="content-body" style="background-color:#fafdfb;">
         <div class="container-fluid mt--7">
             <div class="row">
-
                 @if (session()->has('message'))
                         <div class="alert alert-success" role="alert">
                             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -45,10 +44,10 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-md-3 col-12">
-                                    <button class="btn btn-icon btn-3 btn-success" type="button">
-                                        <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>                             
+                                    <a class="btn btn-icon btn-3 btn-success" href="{{ route('admin.instructor.add') }}">
+                                        <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
                                         <span class="btn-inner--text">Add Instructor</span>
-                                    </button>
+                                    </a>
                                 </div>
                                 <div class="col-md-9 col-12">
                                     <div class="d-md-flex w-full" style="justify-content: space-between;">
@@ -59,7 +58,7 @@
                                                     <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                                                 </div>
                                                 <input wire:model="search" class="form-control" placeholder="Search" type="text">
-                                            </div>  
+                                            </div>
                                         </div>
                                         <div class="sorting-group d-flex">
                                             <!-- Order By -->
@@ -112,7 +111,12 @@
                                             <td>{{ $instructor->name() }}</td>
                                             <td>{{ $instructor->email() }}</td>
                                             <td>{{ $instructor->status() }}</td>
-                                            <td>Action buttons</td>
+                                            <td><a href="{{ route('admin.instructor.edit',['instructor_id'=>$instructor->id]) }}" class="btn btn-primary btn-sm" title="Edit Category" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <i class="ni ni-settings" style="font-size: 14px;"></i>
+                                                </a>
+                                                <button type="button" wire:click.prevent="confirmDelete({{ $instructor->id }})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Category" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <i class="ni ni-fat-remove" style="font-size: 20px;""></i>
+                                                </button></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -123,10 +127,37 @@
                     </div>
                 </div>
                 <div class="pagination">
-                    
-                </div>
 
+                </div>
+                <!-- Delete Confirmation Modal -->
+                    <div wire:ignore.self class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true close-btn">×</span>
+                                    </button>
+                                </div>
+                            <div class="modal-body">
+                                    <p>Are you sure you want to delete? Instructor contains data.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                                    <button type="button" wire:click.prevent="delete()" class="btn btn-danger close-modal" data-dismiss="modal">Yes, Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- end Modal -->
             </div>
         </div>
     </div>
 </div>
+
+@push('child-scripts')
+<script>
+            window.livewire.on('instructorUpdateModal', () => {
+                $('#modal-update').modal('hide');
+            });
+</script>
+@endpush

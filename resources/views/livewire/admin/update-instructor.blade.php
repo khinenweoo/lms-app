@@ -6,13 +6,20 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="text-default mb-0">Add New Instructor</h3>
+                                <h3 class="text-default mb-0">Update Instructor</h3>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form wire:submit.prevent="saveInstructor" enctype="multipart/form-data">
+                        <form wire:submit.prevent="update" enctype="multipart/form-data">
                             @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input wire:model="instructorId" type="hidden" placeholder="InstructorId" class="form-control {{ $errors->has('instructorId') ? ' is-invalid' : '' }}">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -161,7 +168,7 @@
                                     <div class="action d-flex justify-content-center my-4">
                                         <button type="submit" class="btn btn-primary btn-lg">
                                             <i class="ni ni-check-bold"></i>
-                                            Save Instructor
+                                            Update Instructor
                                         </button>
                                     </div>
                                 </div>
