@@ -1,5 +1,8 @@
 <!-- Top navbar -->
-<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+
+<!-- User -->
+@if(Auth::guard('web')->check())
+<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main" style="background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;">
     <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
@@ -14,9 +17,6 @@
                 </div>
             </div>
         </form>
-
-        <!-- User -->
-        @if(Auth::guard('web')->check())
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,18 +51,35 @@
                     </a>
                     <div class="dropdown-divider"></div>
 
-                    
+
                     <a href="{{ route('user.logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('userlogout-form').submit();">
                         <i class="ni ni-user-run"></i>
                         <span>{{ __('Logout') }}</span>
                     </a>
                     <form action="{{ route('user.logout') }}" method="post" class="d-none" id="userlogout-form">@csrf</form>
-                  
+
                 </div>
             </li>
         </ul>
-        @elseif(Auth::guard('admin')->check())
+    </div>
+</nav>
+@elseif(Auth::guard('admin')->check())
+<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+    <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
+        <!-- Form -->
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Search" type="text">
+                </div>
+            </div>
+        </form>
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,18 +114,35 @@
                     </a>
                     <div class="dropdown-divider"></div>
 
-                    
+
                     <a href="{{ route('admin.logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('adminlogout-form').submit();">
                         <i class="ni ni-user-run"></i>
                         <span>{{ __('Logout') }}</span>
                     </a>
                     <form action="{{ route('admin.logout') }}" method="post" class="d-none" id="adminlogout-form">@csrf</form>
-                  
+
                 </div>
             </li>
         </ul>
-        @elseif(Auth::guard('instructor')->check())
+    </div>
+</nav>
+@else(Auth::guard('instructor')->check())
+<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+    <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
+        <!-- Form -->
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+            <div class="form-group mb-0">
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Search" type="text">
+                </div>
+            </div>
+        </form>
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -143,17 +177,17 @@
                     </a>
                     <div class="dropdown-divider"></div>
 
-                    
+
                     <a href="{{ route('instructor.logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('instructorlogout-form').submit();">
                         <i class="ni ni-user-run"></i>
                         <span>{{ __('Logout') }}</span>
                     </a>
                     <form action="{{ route('instructor.logout') }}" method="post" class="d-none" id="instructorlogout-form">@csrf</form>
-                  
+
                 </div>
             </li>
         </ul>
-        @endif
     </div>
 </nav>
+@endif
