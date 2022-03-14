@@ -79,10 +79,14 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">{{ __('Welcome!') }}</h6>
                     </div>
-                    <a href="{{ route('user.profile') }}" class="dropdown-item">
+                    <a href="{{ route('admin.profile') }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>{{ __('My profile') }}</span>
                     </a>
+                    {{--  <a href="{{ route('user.profile') }}" class="dropdown-item">
+                        <i class="ni ni-single-02"></i>
+                        <span>{{ __('My profile') }}</span>
+                    </a>  --}}
                     <a href="#" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>{{ __('Settings') }}</span>
@@ -157,3 +161,10 @@
         @endif
     </div>
 </nav>
+@push('child-scripts')
+<script>
+            window.livewire.on('adminUpdateModal', () => {
+                $('#modal-update').modal('hide');
+            });
+</script>
+@endpush

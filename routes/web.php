@@ -11,6 +11,8 @@ use App\Http\Livewire\Admin\CategoryComponent;
 use App\Http\Livewire\Admin\InstructorList;
 use App\Http\Livewire\Admin\AddInstructor;
 use App\Http\Livewire\Admin\UpdateInstructor;
+use App\Http\Livewire\Admin\AdminProfile;
+use App\Http\Livewire\Admin\UpdateProfile;
 
 
 /*
@@ -52,7 +54,7 @@ Route::prefix('user')->name('user.')->group(function(){
 		Route::get('profile', [ProfileController::class,'edit'])->name('profile');
 		Route::put('profile', [ProfileController::class, 'update'])->name('updateprofile');
 		Route::put('profile/password', [ProfileController::class, 'password'])->name('password');
-		
+
 		// Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 		// Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\User\ProfileController@password']);
 	});
@@ -68,6 +70,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
 	Route::middleware(['auth:admin', 'prevent-back-history'])->group(function(){
 		Route::view('/dashboard', 'back.admin.dashboard')->name('dashboard');
 		Route::post('/logout', [AdminController::class,'logout'])->name('logout');
+        Route::get('/profile', AdminProfile::class)->name('profile');
+        Route::get('/edit/{admin_id}', UpdateProfile::class)->name('edit');
+
 
 		 /*--------------- CATEGORIES ------------------*/
 		Route::get('/categories', CategoryComponent::class)->name('categories');
