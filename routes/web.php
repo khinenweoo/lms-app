@@ -9,7 +9,9 @@ use App\Http\Controllers\Instructor\InstructorController;
 
 use App\Http\Livewire\Admin\CategoryComponent;
 use App\Http\Livewire\Admin\InstructorList;
+use App\Http\Livewire\Admin\CourseList;
 use App\Http\Livewire\Admin\AddInstructor;
+use App\Http\Livewire\Admin\AddCourse;
 
 
 /*
@@ -74,6 +76,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		 /*--------------- INSTRUCTORS ------------------*/
 		Route::get('/instructors', InstructorList::class)->name('instructors');
 		Route::get('/instructor/add', AddInstructor::class)->name('instructor.add');
+
+		/*--------------- COURSES ------------------*/
+		Route::get('/courses', CourseList::class)->name('courses');
+		Route::get('/course/add', AddCourse::class)->name('course.add');
 	});
 });
 

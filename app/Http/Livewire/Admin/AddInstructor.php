@@ -21,6 +21,7 @@ class AddInstructor extends Component
 
     public function saveInstructor()
     {
+
         $validateData = $this->validate([
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:instructors,email'],
@@ -36,6 +37,7 @@ class AddInstructor extends Component
             'twitter_link' => ['nullable', 'string'],
             'linkedin_link' => ['nullable', 'string'],
         ]);
+        // dd($validateData);
 
         $this->setDateFormat($this->dateofbirth);
 
@@ -45,6 +47,9 @@ class AddInstructor extends Component
             $image_filename = 'default.jpg';
         }
 
+        if($this->password == $this->confirm_password) {
+            
+        }
         $instructorData = Instructor::create([
             'name' => $this->name,
             'email' => $this->email,

@@ -4,9 +4,9 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Instructor;
+use App\Models\Course;
 
-class InstructorList extends Component
+class CourseList extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -15,23 +15,22 @@ class InstructorList extends Component
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = 'asc';
-    protected $instructors;
+    protected $courses;
 
     public function render()
     {
-        $this->instructors = $this->filterInstructors();
-
-        return view('livewire.admin.instructor-list', [
-            'instructors' => $this->instructors,
+        $this->courses = $this->searchCourses();
+        return view('livewire.admin.course-list', [
+            'courses' => $this->courses,
         ])->layout('layouts.livewirebase');
     }
 
-    public function filterInstructors()
+    public function searchCourses()
     {
-        $instructors =  Instructor::search($this->search)
+        $courses =  Course::search($this->search)
         ->orderBy($this->orderBy, $this->orderAsc)
         ->paginate($this->perPage);
 
-        return $instructors;
+        return $courses;
     }
 }
