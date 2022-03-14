@@ -23,9 +23,9 @@ class AddCourse extends Component
     public function render()
     {
         // get all categories
-        $categories = Category::all();
+        $categories = Category::where('status', '=', 1)->pluck('name','id');
 
-        $instructors = Instructor::all();
+        $instructors = Instructor::where('status', '=', 1)->pluck('name','id');
 
 
         return view('livewire.admin.add-course', [
@@ -53,11 +53,14 @@ class AddCourse extends Component
             'price' => ['nullable'],
             'started_date' => ['nullable', 'date'],
             'end_date' => ['nullable', 'date'],
+            'reg_close_date' => ['nullable', 'date'],
             'course_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png','max:2048'],
             'overview_video' => ['nullable','max:2048'],
-            'phone' => ['nullable','numeric', 'min:9'],
-
+            'meta_keywords' => ['nullable', 'string'],
+            'meta_desc' => ['nullable', 'string'],
         ]);
+
+
     }
 
 }
