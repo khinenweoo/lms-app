@@ -156,7 +156,7 @@
                                     <div class="form-group">
                                         <label class="control-label mr-4">Status</label>
                                         <label class="custom-toggle mb-0">
-                                            <input wire:model="status" type="checkbox" name="status" >
+                                            <input wire:model="status" type="checkbox" name="status" value="1">
                                             @error('status') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <span class="custom-toggle-slider rounded-circle pt-2"></span>
                                         </label>
