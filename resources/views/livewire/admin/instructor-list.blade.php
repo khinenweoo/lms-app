@@ -115,7 +115,7 @@
                                                 <i class="ni ni-settings" style="font-size: 14px;"></i>
                                                 </a>
                                                 <button type="button" wire:click.prevent="confirmDelete({{ $instructor->id }})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Category" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="ni ni-fat-remove" style="font-size: 20px;""></i>
+                                                <i class="ni ni-fat-remove" style="font-size: 20px;"></i>
                                                 </button></td>
                                         </tr>
                                     @endforeach
