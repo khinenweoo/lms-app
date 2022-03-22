@@ -43,7 +43,7 @@ class CreateCoursesTable extends Migration
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
-            
+
             $table->enum('status', ['enabled', 'disabled'])->default('disabled');
             $table->timestamps();
             $table->softDeletes();

@@ -22,11 +22,13 @@ class CreateUsersTable extends Migration
             $table->date('dob')->nullable()->default(null);
             $table->enum('gender', ['male','female'])->nullable();
             $table->string('avatar_photo')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->string('address')->nullable();
             $table->text('about')->nullable();
+            $table->boolean('confirmed')->default(false);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

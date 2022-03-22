@@ -113,17 +113,12 @@
                     <div class="collapse" id="student-nav">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    {{ __('Add Student') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('admin.students') }}">
                                     {{ __('All Students') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('admin.enrolledstudents') }}">
                                     {{ __('Enrolled Student') }}
                                 </a>
                             </li>
@@ -132,7 +127,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#course-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
-                        <i class="ni ni-books text-green"></i> 
+                        <i class="ni ni-books text-green"></i>
                         <span class="nav-link-text">{{ __('Courses Management') }}</span>
                     </a>
 
@@ -176,7 +171,7 @@
                     <i class="fas fa-pencil-alt text-green"></i> {{ __('Blog') }}
                     </a>
                 </li>
-         
+
             </ul>
 
         </div>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SignUpMail;
 
 class AuthController extends Controller
 {
@@ -17,9 +19,12 @@ class AuthController extends Controller
      * @return view
      */
     function create(Request $request){
+
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
+            'phone' => 'required|numeric|min:8',
             'password' => 'required|min:8|max:30',
             'password_confirmation' => 'required|min:8|max:30|same:password'
         ]);
@@ -27,10 +32,13 @@ class AuthController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->password = \Hash::make($request->password);
+
         $save = $user->save();
 
         if($save){
+            Mail::to('yemyatsandioo@gmail.com')->send(new SignUpMail($user));
             return redirect()->route('user.login')->with('success', 'You are signed up successfully');
         }else {
             return redirect()->back()->with('fail', 'Something went wrong, fail to sign up.');

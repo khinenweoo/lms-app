@@ -10,7 +10,7 @@ class InstructorList extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
     public $perPage = 10;
     public $search = '';
     public $orderBy = 'id';

@@ -12,6 +12,9 @@ use App\Http\Livewire\Admin\InstructorList;
 use App\Http\Livewire\Admin\CourseList;
 use App\Http\Livewire\Admin\AddInstructor;
 use App\Http\Livewire\Admin\AddCourse;
+use App\Http\Livewire\Admin\RegisterStudent;
+use App\Http\Livewire\Admin\ViewRegStudent;
+use App\Http\Livewire\Admin\EnrolledStudent;
 
 
 /*
@@ -53,7 +56,7 @@ Route::prefix('user')->name('user.')->group(function(){
 		Route::get('profile', [ProfileController::class,'edit'])->name('profile');
 		Route::put('profile', [ProfileController::class, 'update'])->name('updateprofile');
 		Route::put('profile/password', [ProfileController::class, 'password'])->name('password');
-		
+
 		// Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 		// Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\User\ProfileController@password']);
 	});
@@ -80,6 +83,11 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		/*--------------- COURSES ------------------*/
 		Route::get('/courses', CourseList::class)->name('courses');
 		Route::get('/course/add', AddCourse::class)->name('course.add');
+
+        /*--------------- STUDENTS ------------------*/
+		Route::get('/students', RegisterStudent::class)->name('students');
+        Route::get('/students/view/{user_id}', ViewRegStudent::class)->name('students.view');
+		Route::get('/enrolledstudents', EnrolledStudent::class)->name('enrolledstudents');
 	});
 });
 
