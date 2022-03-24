@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SignUpMail;
+use App\Mail\StudentSignUpMail;
 
 class AuthController extends Controller
 {
@@ -19,8 +19,6 @@ class AuthController extends Controller
      * @return view
      */
     function create(Request $request){
-
-
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -38,7 +36,7 @@ class AuthController extends Controller
         $save = $user->save();
 
         if($save){
-            Mail::to('yemyatsandioo@gmail.com')->send(new SignUpMail($user));
+            Mail::to('yemyatsandioo@gmail.com')->send(new StudentSignUpMail($user));
             return redirect()->route('user.login')->with('success', 'You are signed up successfully');
         }else {
             return redirect()->back()->with('fail', 'Something went wrong, fail to sign up.');
