@@ -11,11 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-<<<<<<< HEAD
     use HasApiTokens, HasFactory, Notifiable;
-=======
-    use HasApiTokens, HasFactory, Notifiable ;
->>>>>>> e9bc704ec7f49001413552d6dda79c0ff1017dfa
 
     use SoftDeletes;
 
