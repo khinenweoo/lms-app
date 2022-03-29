@@ -37,7 +37,7 @@ class AddInstructor extends Component
             'twitter_link' => ['nullable', 'string'],
             'linkedin_link' => ['nullable', 'string'],
         ]);
-        // dd($validateData);
+        
 
         $this->setDateFormat($this->dateofbirth);
 

@@ -17,29 +17,26 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('slug');
+            $table->string('short_description');
             $table->longText('course_description')->nullable();
+            $table->longText('course_requirements')->nullable();
+            $table->longText('course_outcomes')->nullable();
+            $table->string('cover_image')->nullable();
 
             $table->unsignedInteger('category_id');
             $table->bigInteger('instructor_id')->unsigned();
 
-            $table->longText('course_requirements')->nullable();
-            $table->longText('course_outcomes')->nullable();
-            $table->decimal('price', 15, 2)->nullable();
-            $table->string('course_image')->nullable();
-            $table->string('overview_video')->nullable();
-            $table->timestamp('started_date')->nullable();
-            $table->timestamp('end_date')->nullable();
+            $table->tinyInteger('is_free')->default(0)->nullable();
+            $table->decimal('course_fee', 15, 2)->nullable();
+            $table->string('duration_length')->nullable();
+            $table->date('started_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->date('enroll_close_date')->nullable();
 
-
-            $table->date('reg_close_date')->nullable();
             $table->tinyInteger('published')->default(0)->nullable();
-            $table->tinyInteger('free')->default(0)->nullable();
             $table->integer('featured')->default(0)->nullable();
             $table->integer('trending')->default(0)->nullable();
             $table->integer('popular')->default(0)->nullable();
-            $table->longText('meta_keywords')->nullable();
-            $table->longText('meta_description')->nullable();
-
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');

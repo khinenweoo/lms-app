@@ -21,7 +21,7 @@ class InstructorController extends Controller
         $instructor = new Instructor();
         $instructor->name = $request->name;
         $instructor->email = $request->email;
-        $instructor->password = \Hash::make($request->password);
+        $instructor->password = $request->password;//encrypt in model, not here
         $save = $instructor->save();
 
         if($save){

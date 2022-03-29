@@ -38,8 +38,36 @@ class Course extends Model
         'popular',
         'status'
     ];
-  
-  
+    
+    public function setStartedDateAttribute($value)
+    {
+        $this->attributes['started_date'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function getStartedDateAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['started_date'])->format('m/d/Y');
+    }
+
+    public function setEndDateAttribute($value)
+    {
+        $this->attributes['end_date'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function getEndDateAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['end_date'])->format('m/d/Y');
+    }
+
+    public function setEnrollCloseDateAttribute($value)
+    {
+        $this->attributes['enroll_close_date'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function getEnrollCloseDateAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['enroll_close_date'])->format('m/d/Y');
+    }
 
     public static function search($search)
     {
@@ -55,7 +83,7 @@ class Course extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function instructor()
+    public function instructor(): BelongsTo
     {
         return $this->belongsTo(instructor::class, 'instructor_id');
     }
@@ -65,8 +93,8 @@ class Course extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
+    public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

@@ -19,6 +19,10 @@
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('assets') }}/css/argon.css" rel="stylesheet">
 
+        <link rel="stylesheet" href="{{ asset('assets') }}/vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+
         @livewireStyles
 
         <!-- Custom CSS -->

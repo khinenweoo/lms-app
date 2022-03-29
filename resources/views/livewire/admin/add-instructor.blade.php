@@ -56,9 +56,11 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
                                             </div>
-                                            <input wire:model="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" autocomplete="off">
-                                            @error('password') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <input wire:model="password" type="password" autocomplete="off" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}">
                                         </div>
+                                        @if ($errors->has('password'))
+                                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -68,9 +70,11 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
                                             </div>
-                                            <input wire:model="confirm_password" class="form-control {{ $errors->has('confirm_password') ? ' is-invalid' : '' }}" type="password" autocomplete="off">
-                                            @error('confirm_password') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <input wire:model="confirm_password" type="password" autocomplete="off" class="form-control {{ $errors->has('confirm_password') ? ' is-invalid' : '' }}">
                                         </div>
+                                        @if ($errors->has('confirm_password'))
+                                            <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

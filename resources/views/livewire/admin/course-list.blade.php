@@ -111,17 +111,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                 
+                                    @foreach ($courses as $course)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Action buttons</td>
+                                            <td>{{ $course->id }}</td>
+                                            <td>{{ $course->name }}</td>
+                                            <td>{{ $course->category->name }}</td>
+                                            <td>{{ $course->instructor->name }}</td>
+                                            <td>
+                                                <label class="custom-toggle">
+                                                <input type="checkbox" {{ $course->status === 1? 'checked': '' }} disabled >
+                                                <span class="custom-toggle-slider rounded-circle"></span>
+                                                </label>
+                                            </td>
+                                            <td>Lessons</td>
+                                            <td>
+                                                <button type="button" wire:click.prevent="" class="btn btn-primary btn-sm" title="Edit Course" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <i class="fa fa-edit"></i>  
+                                                </button>
+                                                <button type="button" wire:click.prevent="" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Course" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <i class="fa fa-trash-alt"></i>
+                                                </button> 
+                                            </td>
                                         </tr>
-                                  
+                                    @endforeach
                                 </tbody>
                             </table>
 

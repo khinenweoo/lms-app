@@ -35,7 +35,6 @@ Route::view('/course-details', 'course-details')->name('course-details');
 
 Auth::routes();
 
-
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::prefix('user')->name('user.')->group(function(){
@@ -48,7 +47,6 @@ Route::prefix('user')->name('user.')->group(function(){
 	Route::middleware(['auth:web', 'prevent-back-history'])->group(function(){
 		Route::view('/home', 'front.user.home')->name('home');
 		Route::post('/logout', [AuthController::class,'logout'])->name('logout');
-
 
 		Route::get('profile', [ProfileController::class,'edit'])->name('profile');
 		Route::put('profile', [ProfileController::class, 'update'])->name('updateprofile');
@@ -90,7 +88,6 @@ Route::prefix('instructor')->name('instructor.')->group(function(){
 		Route::view('/signup', 'back.instructor.auth.signup')->name('signup');
 		Route::post('/check',[InstructorController::class, 'check'])->name('check');
 		Route::post('/create',[InstructorController::class, 'create'])->name('create');
-
 	});
 
 	Route::middleware(['auth:instructor', 'prevent-back-history'])->group(function(){

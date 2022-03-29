@@ -84,11 +84,23 @@ class Instructor extends Authenticatable
     {
         return $this->status;
     }
+
     public function createdAt(): string 
     {
         return $this->created_at->format('m/d/Y');
     }
 
+    // modify attribute when we get this
+    public function getNameAttribute($name)
+    {
+        return ucfirst($name);
+    }
+
+    // change the password when insert into db using mutator
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
