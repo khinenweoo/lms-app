@@ -117,7 +117,6 @@ class AddCourse extends Component
         
             return redirect()->route('admin.courses');
         }
-
     }
 
     public function increaseStep()

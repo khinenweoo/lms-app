@@ -12,6 +12,7 @@ use App\Http\Livewire\Admin\InstructorList;
 use App\Http\Livewire\Admin\CourseList;
 use App\Http\Livewire\Admin\AddInstructor;
 use App\Http\Livewire\Admin\AddCourse;
+use App\Http\Livewire\Admin\EditCourse;
 
 
 /*
@@ -78,6 +79,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		/*--------------- COURSES ------------------*/
 		Route::get('/courses', CourseList::class)->name('courses');
 		Route::get('/course/add', AddCourse::class)->name('course.add');
+		Route::get('/course/edit', EditCourse::class)->name('course.edit');
 	});
 });
 

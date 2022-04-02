@@ -39,7 +39,6 @@ class Course extends Model
         'status'
     ];
   
-  
 
     public static function search($search)
     {
