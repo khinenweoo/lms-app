@@ -125,7 +125,7 @@
                                             </td>
                                             <td>Lessons</td>
                                             <td>
-                                                <a href="{{route('admin.editcourse',['course_slug' => $course->slug])}}" class="btn btn-primary btn-sm" title="Edit Course" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <a href="{{route('admin.course.edit',['course_slug' => $course->slug])}}" class="btn btn-primary btn-sm" title="Edit Course" style="border-radius:14px;padding:.35rem .5rem;">
                                                 <i class="fa fa-edit"></i>  
                                                 </a>
                                                 <button type="button" wire:click.prevent="" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Course" style="border-radius:14px;padding:.35rem .5rem;">
