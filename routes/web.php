@@ -17,6 +17,9 @@ use App\Http\Livewire\Admin\EditCourse;
 
 use App\Http\Livewire\Admin\AdminProfile;
 use App\Http\Livewire\Admin\UpdateProfile;
+use App\Http\Livewire\Admin\RegisterStudent;
+use App\Http\Livewire\Admin\ViewRegStudent;
+use App\Http\Livewire\Admin\EnrolledStudent;
 
 
 /*
@@ -88,6 +91,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		Route::get('/courses', CourseList::class)->name('courses');
 		Route::get('/course/add', AddCourse::class)->name('course.add');
 		Route::get('/course/edit', EditCourse::class)->name('course.edit');
+        /*--------------- STUDENTS ------------------*/
+		Route::get('/students', RegisterStudent::class)->name('students');
+        Route::get('/students/view/{user_id}', ViewRegStudent::class)->name('students.view');
+		Route::get('/enrolledstudents', EnrolledStudent::class)->name('enrolledstudents');
 
 
 	});
