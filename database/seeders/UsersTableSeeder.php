@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'student@lms.com',
             'phone' => '09123456789',
             'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
+            'password' => Hash::make('secret1234'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
