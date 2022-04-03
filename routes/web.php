@@ -19,7 +19,6 @@ use App\Http\Livewire\Admin\AdminProfile;
 use App\Http\Livewire\Admin\UpdateProfile;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
