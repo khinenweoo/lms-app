@@ -33,10 +33,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Chart -->
-                        <div class="chart">
-                            <!-- Chart wrapper -->
-                            <canvas id="chart-sales" class="chart-canvas"></canvas>
-                        </div>
+
                     </div>
                 </div>
             </div>
