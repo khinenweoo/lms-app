@@ -6,13 +6,20 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="text-default mb-0">Add New Instructor</h3>
+                                <h3 class="text-default mb-0">Update Instructor</h3>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form wire:submit.prevent="saveInstructor" enctype="multipart/form-data">
+                        <form wire:submit.prevent="update" enctype="multipart/form-data">
                             @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input wire:model="instructorId" type="hidden" placeholder="InstructorId" class="form-control {{ $errors->has('instructorId') ? ' is-invalid' : '' }}">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -56,11 +63,9 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
                                             </div>
-                                            <input wire:model="password" type="password" autocomplete="off" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                            <input wire:model="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" autocomplete="off">
+                                            @error('password') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
-                                        @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -70,11 +75,9 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
                                             </div>
-                                            <input wire:model="confirm_password" type="password" autocomplete="off" class="form-control {{ $errors->has('confirm_password') ? ' is-invalid' : '' }}">
+                                            <input wire:model="confirm_password" class="form-control {{ $errors->has('confirm_password') ? ' is-invalid' : '' }}" type="password" autocomplete="off">
+                                            @error('confirm_password') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
-                                        @if ($errors->has('confirm_password'))
-                                            <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +168,7 @@
                                     <div class="action d-flex justify-content-center my-4">
                                         <button type="submit" class="btn btn-primary btn-lg">
                                             <i class="ni ni-check-bold"></i>
-                                            Save Instructor
+                                            Update Instructor
                                         </button>
                                     </div>
                                 </div>

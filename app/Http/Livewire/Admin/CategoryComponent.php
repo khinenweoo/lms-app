@@ -13,7 +13,7 @@ class CategoryComponent extends Component
     use WithPagination;
     use WithFileUploads;
     protected $paginationTheme = 'bootstrap';
-    
+
     public $perPage = 10;
     public $search = '';
     public $orderBy = 'id';
@@ -136,7 +136,7 @@ class CategoryComponent extends Component
                 'description' => $this->description,
                 'status' => $this->status,
             ]);
-            
+
             $this->updateMode = false;
             session()->flash('message', 'Category updated.');
             $this->resetInput();
