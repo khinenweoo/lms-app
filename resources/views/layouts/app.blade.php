@@ -27,6 +27,7 @@
                 @csrf
             </form>
             @include('layouts.navbars.sidebar')
+        
         @endauth
         
         <div class="main-content">
