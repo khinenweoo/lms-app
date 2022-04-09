@@ -49,9 +49,16 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="form-group">
+                                        @if($newphoto)
+                                            <img src="{{$newphoto->temporaryUrl()}}" width="120" />
+                                        @else
+                                            <img src="{{asset('storage/students')}}/{{$avatar_photo}}" width="120" />
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
                                         <label class="control-label">Image</label>
-                                        <input wire:model="photo" type="file" class="form-control {{ $errors->has('photo') ? ' is-invalid' : '' }}">
-                                        @error('photo') <span class="text-danger error">{{ $message }}</span>@enderror
+                                        <input wire:model="newphoto" type="file" class="form-control">
+                                        @error('newphoto') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
                             </div>
@@ -85,10 +92,6 @@
                                 <div class="col">
                                     <div class="form-group d-flex">
                                         <label for="password" class="mr-4">Gender</label>
-                                        <!-- <div class="custom-control custom-radio mb-3 pl-5">
-                                            <input wire:model="gender" name="gender" class="custom-control-input" id="customRadio5" value="male" type="radio">
-                                            <label class="custom-control-label" for="male">Male</label>
-                                        </div> -->
                                         <div class="custom-control custom-radio mb-3">
                                             <input wire:model="gender" name="gender" value="male" class="custom-control-input" id="customRadio5" type="radio">
                                             <label class="custom-control-label" for="customRadio5">Male</label>
@@ -109,8 +112,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input wire:model="dateofbirth" class="form-control datepicker" name="dateofbirth" id="dateofbirth" placeholder="Select date" type="text">
-                                            @error('dateofbirth') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <input wire:model="dob" class="form-control datepicker" name="dob" id="dob" placeholder="Select date" type="text">
+                                            @error('dob') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                 </div>
@@ -130,6 +133,18 @@
 
                                         <!-- <input wire:model="address" type="text" placeholder="Address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}"> -->
                                         @error('address') <span class="text-danger error">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label class="control-label mr-4">Status</label>
+                                        <label class="custom-toggle mb-0">
+                                            <input wire:model="status" type="checkbox" name="status" value="1">
+                                            @error('status') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <span class="custom-toggle-slider rounded-circle pt-2"></span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +174,7 @@
         format: 'MM/DD/YYYY'
         });
         $(".datepicker").on("change", function(e) {
-        @this.set('dateofbirth', e.target.value)
+        @this.set('dob', e.target.value)
         });
     });
     </script>

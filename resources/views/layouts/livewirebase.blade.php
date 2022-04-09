@@ -21,11 +21,10 @@
 
         <link rel="stylesheet" href="{{ asset('assets') }}/vendor/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
-
-
         @livewireStyles
-
         <!-- Custom CSS -->
+        <link type="text/css" href="{{ asset('assets') }}/css/custom.css" rel="stylesheet">
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()

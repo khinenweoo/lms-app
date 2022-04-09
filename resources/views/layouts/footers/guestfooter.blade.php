@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>The automated process starts as soon as your clothes go into the machine.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                                     </div>
                                 </div>
                                 <!-- social -->
@@ -28,13 +28,13 @@
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Our solutions</h4>
+                                <h4>Explore Services</h4>
                                 <ul>
-                                    <li><a href="#">Design & creatives</a></li>
-                                    <li><a href="#">Telecommunication</a></li>
-                                    <li><a href="#">Restaurant</a></li>
-                                    <li><a href="#">Programing</a></li>
-                                    <li><a href="#">Architecture</a></li>
+                                    <li><a href="#">Free Courses</a></li>
+                                    <li><a href="#">Blogs</a></li>
+                                    <li><a href="#">Help and Support</a></li>
+                                    <li><a href="#">Terms</a></li>
+                                    <li><a href="#">Certificate Verification</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -42,13 +42,13 @@
                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Support</h4>
+                                <h4>Company Info</h4>
                                 <ul>
-                                    <li><a href="#">Design & creatives</a></li>
-                                    <li><a href="#">Telecommunication</a></li>
-                                    <li><a href="#">Restaurant</a></li>
-                                    <li><a href="#">Programing</a></li>
-                                    <li><a href="#">Architecture</a></li>
+                                    <li><a href="#">Edu for Business</a></li>
+                                    <li><a href="#">Get the app</a></li>
+                                    <li><a href="#">Teach on LMS</a></li>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Contact us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -56,13 +56,13 @@
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Company</h4>
+                                <h4>Support Zone</h4>
                                 <ul>
-                                    <li><a href="#">Design & creatives</a></li>
-                                    <li><a href="#">Telecommunication</a></li>
-                                    <li><a href="#">Restaurant</a></li>
-                                    <li><a href="#">Programing</a></li>
-                                    <li><a href="#">Architecture</a></li>
+                                    <li><a href="#">Unlock Your Potential</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Sitemap</a></li>
+                                    <li><a href="#">Featured Courses</a></li>
+                                    <li><a href="#">Join Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -77,9 +77,9 @@
                     <div class="row d-flex align-items-center">
                         <div class="col-xl-12 ">
                             <div class="footer-copy-right text-center">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                <p>
+                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> LMS. All rights reserved.
+                                </p>
                               </div>
                           </div>
                       </div>

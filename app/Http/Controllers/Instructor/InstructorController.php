@@ -52,4 +52,5 @@ class InstructorController extends Controller
         Auth::guard('instructor')->logout();
         return redirect('/');
     }
+    
 }

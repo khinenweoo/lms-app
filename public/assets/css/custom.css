@@ -1,0 +1,53 @@
+.change-avatar , .add-avatar{
+    display: flex;
+    align-items: center;
+    -webkit-box-align: center;
+}
+.change-avatar .profile-img,
+.add-avatar .profile-img {
+    margin-right: 15px;
+}
+.change-avatar .profile-img img,
+.add-avatar .profile-img img{
+    border-radius: 5px;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.change-photo-btn {
+    background-color: #1e88e5;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 auto;
+    padding: 10px 15px;
+    position: relative;
+    transition: .3s;
+    text-align: center;
+}
+.change-avatar .change-photo-btn,
+.add-avatar .change-photo-btn {
+    margin: 0 0 10px;
+    width: 150px;
+}
+.change-photo-btn input.upload,
+.add-photo-btn input.upload {
+    bottom: 0;
+    cursor: pointer;
+    filter: alpha(opacity=0);
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 220px;
+}
+.text-muted {
+    color: #757575 !important;
+}

@@ -2,6 +2,8 @@
     <div class="content-body bg-gradient-green pb-7 pt-5">
         <div class="container-fluid">
             <div class="content-wrapper">
+                <form wire:submit.prevent="saveInstructor" enctype="multipart/form-data">
+                @csrf
                 <div class="card shadow mt-5 mb-3">
                     <div class="card-header">
                         <div class="row align-items-center">
@@ -10,15 +12,46 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <form wire:submit.prevent="saveInstructor" enctype="multipart/form-data">
-                            @csrf
+                    <div class="card-body">    
                             <div class="row">
                                 <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="add-avatar">
+                                            <div class="profile-img">
+                                                @if(empty($photo))
+                                                    <img src="asset('storage/instructors/default-avatar.png')" alt="">
+                                                @else
+                                                    <img src="{{asset('storage/instructors')}}/{{$photo}}"/>
+                                                @endif
+                                            </div>
+                                            <div class="upload-img">
+                                                <div class="change-photo-btn btn-form">
+                                                    <span>
+                                                        <i class="fa fa-upload"></i>
+                                                        Upload Photo
+                                                    </span>
+                                                    <input type="file" wire:model="photo" class="upload {{ $errors->has('photo') ? ' is-invalid' : '' }}">
+                                                    @error('photo') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                </div>
+                                                <small class="form-text text-muted">Allowed JPG or PNG.Max size of 2MB</small>
+                                            </div>
+                                        </div>                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input wire:model="name" type="text" placeholder="Name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">
                                         @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Email</label>
+                                        <input wire:model="email" type="email" placeholder="Email Address" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}">
+                                        @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
                             </div>
@@ -31,61 +64,11 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-xl-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Email</label>
-                                        <input wire:model="email" type="email" placeholder="Email Address" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}">
-                                        @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Image</label>
-                                        <input wire:model="photo" type="file" class="form-control {{ $errors->has('photo') ? ' is-invalid' : '' }}">
-                                        @error('photo') <span class="text-danger error">{{ $message }}</span>@enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-6">
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <div class="input-group mb-4">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
-                                            </div>
-                                            <input wire:model="password" type="password" autocomplete="off" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}">
-                                        </div>
-                                        @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="form-group">
-                                        <label for="password">Confirm Password</label>
-                                        <div class="input-group mb-4">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
-                                            </div>
-                                            <input wire:model="confirm_password" type="password" autocomplete="off" class="form-control {{ $errors->has('confirm_password') ? ' is-invalid' : '' }}">
-                                        </div>
-                                        @if ($errors->has('confirm_password'))
-                                            <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group d-flex">
-                                        <label for="password" class="mr-4">Gender</label>
-                                        <!-- <div class="custom-control custom-radio mb-3 pl-5">
-                                            <input wire:model="gender" name="gender" class="custom-control-input" id="customRadio5" value="male" type="radio">
-                                            <label class="custom-control-label" for="male">Male</label>
-                                        </div> -->
+                                        <label for="gender" class="mr-4">Gender</label>
+     
                                         <div class="custom-control custom-radio mb-3">
                                             <input wire:model="gender" name="gender" value="male" class="custom-control-input" id="customRadio5" type="radio">
                                             <label class="custom-control-label" for="customRadio5">Male</label>
@@ -109,7 +92,6 @@
                                             <input wire:model="dateofbirth" class="form-control datepicker" name="dateofbirth" id="dateofbirth" placeholder="Select date" type="text">
                                             @error('dateofbirth') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
-                                        <p id="showdate"> No Date is Picked </p>
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -160,19 +142,60 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="action d-flex justify-content-center my-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            <i class="ni ni-check-bold"></i>
-                                            Save Instructor
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        
                     </div>
                 </div>
+                <div class="card show mt-3">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 class="text-default mb-0">Instructor Account</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <div class="input-group mb-4">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
+                                                </div>
+                                                <input wire:model="password" type="password" autocomplete="off" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                            </div>
+                                            @if ($errors->has('password'))
+                                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                            @endif
+                                    </div>
+                                </div>
+                                    <div class="col-xl-6">
+                                        <div class="form-group">
+                                            <label for="password">Confirm Password</label>
+                                            <div class="input-group mb-4">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i style="cursor:pointer;" class="fas fa-eye-slash eye toggle-password"></i></span>
+                                                </div>
+                                                <input wire:model="confirm_password" type="password" autocomplete="off" class="form-control {{ $errors->has('confirm_password') ? ' is-invalid' : '' }}">
+                                            </div>
+                                            @if ($errors->has('confirm_password'))
+                                                <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center my-4">
+                            <button type="submit" class="btn btn-form btn-md">
+                                        <i class="ni ni-check-bold"></i>
+                                            Save Instructor
+                             </button>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>

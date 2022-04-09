@@ -11,8 +11,9 @@ class ViewRegStudent extends Component
 {
     use WithFileUploads;
     public $user_id;
-    public $name, $email, $password, $dob, $gender, $avatar_photo, $phone;
-    public $address, $about;
+    public $name, $email, $password, $confirm_password, $dob, $gender, $avatar_photo, $phone;
+    public $newphoto;
+    public $address, $about, $status;
 
     public function render()
     {
@@ -41,14 +42,31 @@ class ViewRegStudent extends Component
      */
     public function update()
     {
+        $validateData = $this->validate([
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['nullable', 'string', 'min:8'],
+            'confirm_password' => ['nullable', 'string', 'min:8', 'same:password'],
+            'dob' => ['nullable', 'date'],
+            'gender' => ['nullable', 'in:male,female'],
+            'newphoto' => ['nullable', 'image', 'mimes:jpg,jpeg,png','max:3000'],
+            'phone' => ['nullable','numeric', 'min:9'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'about' => ['nullable', 'string', 'max:255'],
+            'status' => ['in:0,1']
+        ]);
+
         if($this->user_id) {
             $user = User::find($this->user_id);
 
-            if(isset($this->update_photo)) {
-                $image_filename = $this->photoUpload($this->update_photo);
+            $this->setDateFormat($this->dob);
+
+            if(isset($this->newphoto)) {
+                $image_filename = $this->photoUpload($this->newphoto);
             }else {
                 $image_filename = $this->avatar_photo;
             }
+
 
             $user->update([
                 'userId'=> $this->user_id,
@@ -70,9 +88,10 @@ class ViewRegStudent extends Component
             }
         }
     }
+    
     public function setDateFormat($value)
     {
-        $this->dateofbirth = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+        $this->dob = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
     }
 
     public function photoUpload($avatar_photo)

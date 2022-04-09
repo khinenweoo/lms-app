@@ -61,9 +61,9 @@ class User extends Authenticatable
     {
         return $this->gender;
     }
-    public function avatar_photo(): string
+    public function avatar_photo()
     {
-        return $this->photo;
+        return $this->avatar_photo;
     }
     public function phone(): string
     {

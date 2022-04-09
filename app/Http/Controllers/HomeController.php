@@ -19,8 +19,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function getIndex()
     {
-        return view('dashboard');
+        return view('welcome');
+    }
+
+    /**
+     * Show the application Homepage
+     *
+     * @return \Illuminate\View\View
+     */
+    public function home()
+    {
+        return view('welcome');
     }
 }

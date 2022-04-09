@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Instructor extends Authenticatable
 {
@@ -60,6 +61,17 @@ class Instructor extends Authenticatable
     {
         return $this->dateofbirth;
     }
+
+    public function setDateofbirthAttribute($value)
+    {
+        $this->attributes['dateofbirth'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function getDateofbirthAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['dateofbirth'])->format('m/d/Y');
+    }
+
     public function gender(): enum
     {
         return $this->gender;

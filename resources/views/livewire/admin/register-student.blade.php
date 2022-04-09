@@ -79,6 +79,8 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone</th>
@@ -88,6 +90,12 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
+                                            <td>{{ $user->id }}</td>
+                                            @if($user->avatar_photo() == null)
+                                            <td ><img src="{{ asset('storage/students/defaultavatar.png') }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
+                                            @else
+                                            <td ><img src="{{ asset('storage/students/'.$user->avatar_photo()) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
+                                            @endif
                                             <td>{{ $user->name() }}</td>
                                             <td>{{ $user->email() }}</td>
                                             <td>{{ $user->phone() }}</td>

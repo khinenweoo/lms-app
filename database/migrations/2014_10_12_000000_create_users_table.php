@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->text('about')->nullable();
             $table->boolean('confirmed')->default(false);
+            $table->integer('status')->default(1)->comment('0 - disabled, 1 - enabled');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -30,8 +30,10 @@ class RedirectIfAuthenticated
                 if($guard === 'instructor') {
                     return redirect()->route('instructor.dashboard');
                 }
-                return redirect()->route('user.home');
-                // return redirect(RouteServiceProvider::HOME);
+                if($guard === 'web') {
+                    return redirect()->route('user.home');
+                }
+                return redirect(RouteServiceProvider::HOME);
             }
         }
 

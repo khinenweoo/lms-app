@@ -28,8 +28,7 @@
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
                                                 <!-- Button -->
-                                                <li class="button-header margin-left "><a href="#" class="btn">Join</a></li>
-                                                <li class="button-header"><a href="{{route('user.login')}}" class="btn btn3">Log in</a></li>
+                                                <li class="button-header"><a href="{{route('user.login')}}" class="btn btn3">Sign in</a></li>
                                             </ul>
                                         </nav>
                                     </div>

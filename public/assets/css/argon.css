@@ -2338,7 +2338,7 @@ pre code
     transition: all .2s cubic-bezier(.68, -.55, .265, 1.55);
 
     color: #8898aa;
-    border: 1px solid #eaeaea73;
+    border: 1px solid #add2a873;
     border-radius: 30px;
     background-color: #fff;
     background-clip: padding-box;
@@ -4591,7 +4591,7 @@ input[type='button'].btn-block
     white-space: nowrap;
 
     color: #adb5bd;
-    border: 1px solid #eaeaea73;
+    border: 1px solid #add2a873;
     border-radius: 30px;
     background-color: #fff;
 
@@ -4792,7 +4792,7 @@ input[type='button'].btn-block
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before
 {
-    background-color: #5e72e4;
+    background-color: #2dce9d;
 }
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after
@@ -17786,13 +17786,14 @@ a.btn-icon-only
 }
 .custom-toggle input:checked + .custom-toggle-slider
 {
-    border: 1px solid #5e72e4;
+
+    border: 1px solid #2dce9d;
 }
 .custom-toggle input:checked + .custom-toggle-slider:before
 {
     transform: translateX(1.625rem);
 
-    background: #5e72e4;
+    background: #2dce9d;
 }
 .custom-toggle input:disabled + .custom-toggle-slider
 {

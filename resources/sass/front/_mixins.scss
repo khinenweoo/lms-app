@@ -132,10 +132,7 @@
             align-items: $value;
   }
   
-  
-  // Cross-axis Alignment
-  // - applies to: flex items
-  // auto | flex-start | flex-end | center | baseline | stretch 
+
   @mixin align-self($value: auto) {
     // No Webkit Box Fallback.
     -webkit-align-self: $value;
@@ -149,8 +146,7 @@
     align-self: $value;
   }
   
-  // Packing Flex Lines [align-content]
-  // flex-start | flex-end | center | space-between | space-around | stretch 
+
   @mixin align-content($value: stretch) {
     // No Webkit Box Fallback.
     -webkit-align-content: $value;

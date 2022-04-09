@@ -25,8 +25,8 @@ class AddInstructor extends Component
         $validateData = $this->validate([
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:instructors,email'],
-            'password' => ['required', 'string', 'min:8'],
-            'confirm_password' => ['required', 'string', 'min:8', 'same:password'],
+            'password' => ['nullable', 'string', 'min:8'],
+            'confirm_password' => ['nullable', 'string', 'min:8', 'same:password'],
             'dateofbirth' => ['nullable', 'date'],
             'gender' => ['nullable', 'in:male,female'],
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png','max:3000'],
@@ -38,9 +38,6 @@ class AddInstructor extends Component
             'linkedin_link' => ['nullable', 'string'],
             'status' => ['in:0,1']
         ]);
-        
-
-        $this->setDateFormat($this->dateofbirth);
 
         if(isset($this->photo)) {
             $image_filename = $this->photoUpload($this->photo);
@@ -74,10 +71,6 @@ class AddInstructor extends Component
         }
     }
 
-    public function setDateFormat($value)
-    {
-        $this->dateofbirth = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
-    }
 
     public function photoUpload($photo)
     {

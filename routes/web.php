@@ -6,6 +6,7 @@ use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Instructor\InstructorController;
+use App\Http\Controllers\HomeController;
 
 use App\Http\Livewire\Admin\CategoryComponent;
 use App\Http\Livewire\Admin\InstructorList;
@@ -33,17 +34,17 @@ use App\Http\Livewire\Admin\EnrolledStudent;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::view('/courses', 'courses')->name('courses');
 Route::view('/student_dashboard', 'student_dashboard')->name('student_dashboard');
 Route::view('/course-details', 'course-details')->name('course-details');
 
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::group(['middleware' => 'web'], function () {
+	/*--------------- FRONT ROUTES ------------------*/
+    Route::get('/', 'App\Http\Controllers\ViewHomepageController@index')->name('home');
+});
+
 
 Route::prefix('user')->name('user.')->group(function(){
 	Route::middleware(['guest:web', 'prevent-back-history'])->group(function(){
@@ -60,14 +61,13 @@ Route::prefix('user')->name('user.')->group(function(){
 		Route::put('profile', [ProfileController::class, 'update'])->name('updateprofile');
 		Route::put('profile/password', [ProfileController::class, 'password'])->name('password');
 
-		// Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-		// Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\User\ProfileController@password']);
 	});
 });
 
 Route::prefix('admin')->name('admin.')->group(function(){
 
 	Route::middleware(['guest:admin', 'prevent-back-history'])->group(function(){
+		Route::view('/','back.admin.auth.login');
 		Route::view('/login','back.admin.auth.login')->name('login');
 		Route::post('/check',[AdminController::class, 'check'])->name('check');
 	});
@@ -84,25 +84,25 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 		 /*--------------- INSTRUCTORS ------------------*/
 		Route::get('/instructors', InstructorList::class)->name('instructors');
-		Route::get('/instructor/add', AddInstructor::class)->name('instructor.add');
+		Route::get('/instructor/create', AddInstructor::class)->name('instructor.add');
 		Route::get('/instructor/edit/{instructor_id}', UpdateInstructor::class)->name('instructor.edit');
+		// Route::post('/upload', [AdminController::class, 'imgupload'])->name('imgupload');
 
 		/*--------------- COURSES ------------------*/
 		Route::get('/courses', CourseList::class)->name('courses');
-		Route::get('/course/add', AddCourse::class)->name('course.add');
+		Route::get('/course/create', AddCourse::class)->name('course.add');
 		Route::get('/course/edit', EditCourse::class)->name('course.edit');
         /*--------------- STUDENTS ------------------*/
 		Route::get('/students', RegisterStudent::class)->name('students');
-        Route::get('/students/view/{user_id}', ViewRegStudent::class)->name('students.view');
+        Route::get('/students/{user_id}/show', ViewRegStudent::class)->name('students.view');
 		Route::get('/enrolledstudents', EnrolledStudent::class)->name('enrolledstudents');
-
-
 	});
 });
 
 Route::prefix('instructor')->name('instructor.')->group(function(){
 
 	Route::middleware(['guest:instructor', 'prevent-back-history'])->group(function(){
+		Route::view('/','back.instructor.auth.login');
 		Route::view('/login','back.instructor.auth.login')->name('login');
 		Route::view('/signup', 'back.instructor.auth.signup')->name('signup');
 		Route::post('/check',[InstructorController::class, 'check'])->name('check');

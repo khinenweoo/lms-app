@@ -110,12 +110,17 @@
                                             <td ><img src="{{ asset('storage/instructors/'.$instructor->photo()) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
                                             <td>{{ $instructor->name() }}</td>
                                             <td>{{ $instructor->email() }}</td>
-                                            <td>{{ $instructor->status() }}</td>
+                                            <td>
+                                                <label class="custom-toggle">
+                                                <input type="checkbox" {{ $instructor->status === 1? 'checked': '' }} disabled >
+                                                <span class="custom-toggle-slider rounded-circle"></span>
+                                                </label>
+                                            </td>
                                             <td><a href="{{ route('admin.instructor.edit',['instructor_id'=>$instructor->id]) }}" class="btn btn-primary btn-sm" title="Edit Category" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="ni ni-settings" style="font-size: 14px;"></i>
+                                                <i class="fa fa-edit"></i>
                                                 </a>
                                                 <button type="button" wire:click.prevent="confirmDelete({{ $instructor->id }})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Category" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="ni ni-fat-remove" style="font-size: 20px;"></i>
+                                                <i class="fa fa-trash-alt"></i>
                                                 </button></td>
                                         </tr>
                                     @endforeach

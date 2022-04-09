@@ -89,7 +89,7 @@
                     margin: 0 8px;  
                 }
                 a{
-                    color: #fff;
+                    color: #26292c;
                     font-weight: 600;
                     padding: 39px 2px;
                     display: block;
@@ -99,7 +99,7 @@
                 }
                 &:hover{
                     & > a{
-                        color:#fff;
+                        color:$primarycolor;
                     }
                 }
             }
@@ -128,9 +128,7 @@
                             background: none;
                             padding-left: 13px !important;
                         }
-                        i{
-                            // @include transition(.4s);
-                        }
+
                     }
                 } 
             }

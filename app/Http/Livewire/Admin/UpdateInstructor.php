@@ -10,7 +10,7 @@ class UpdateInstructor extends Component
 {
     use WithFileUploads;
     public $instructor_id;
-    public $update_photo;
+    public $newphoto;
     public $name, $email, $password, $confirm_password, $dateofbirth, $gender, $photo, $phone;
     public $address, $about, $facebook_link, $twitter_link, $linkedin_link, $status;
 
@@ -25,8 +25,6 @@ class UpdateInstructor extends Component
         $instructor = Instructor::find($this->instructor_id);
         $this->name = $instructor->name;
         $this->email = $instructor->email;
-        $this->password = $instructor->password;
-        $this->confirm_password = $instructor->confirm_password;
         $this->dateofbirth = $instructor->dateofbirth;
         $this->gender = $instructor->gender;
         $this->photo= $instructor->photo;
@@ -51,8 +49,8 @@ class UpdateInstructor extends Component
         if($this->instructor_id) {
             $instructor = Instructor::find($this->instructor_id);
 
-            if(isset($this->update_photo)) {
-                $image_filename = $this->photoUpload($this->update_photo);
+            if($this->newphoto != null) {
+                $image_filename = $this->photoUpload($this->newphoto);
             }else {
                 $image_filename = $this->photo;
             }
@@ -82,6 +80,7 @@ class UpdateInstructor extends Component
 
         }
     }
+
     public function setDateFormat($value)
     {
         $this->dateofbirth = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');

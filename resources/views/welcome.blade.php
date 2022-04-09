@@ -11,7 +11,7 @@
                     <h2><span>Title Here</span></h2>
                 </div>
                 <p class="wow fadeInLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#" class="btn-get-started wow fadeInLeft">Get Started</a>
+                <a href="#" class="btn btn3 wow fadeInLeft">Get Started</a>
             </div>
             <div class="col-lg-6 wow fadeInRight" style="padding-top:120px;">
                 <div class="video-wrapper">
@@ -37,229 +37,133 @@
 <!-- Category Section Starts -->
 <section class="category-section">
     <div class="container">
-        <div class="row pb-4">
-            <div class="col-lg-12" style="padding-top:50px;">
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="section-title text-center wow bounceIn">
                     <h2>popular <span>categories</span></h2>
-                </div><hr>
+                </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row pt-5">
             <div class="col-lg-3 col-md-6 wow flipInX">
                 <a href="#">
                     <div class="single-category-item">
                         <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-1.png') }}" alt="image">
+                            <img src="{{ asset('frontend/assets/img/c1.jpg') }}" class="cat-img" alt="image">
                             <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
                         </div>
-                        <div class="category-title">
-                            <h4>web design</h4>
+                        <div class="cat-content">
+                            <div class="category-title">
+                                <h4>Literature</h4>
+                            </div>
+                            <span>03 course(S)</span>
                         </div>
-                        <span>03 course(S)</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 wow flipInX">
+                <a href="#">
+                    <div class="single-category-item">
+                        <div class="category-image">
+                            <img src="{{ asset('frontend/assets/img/c2.jpg') }}" class="cat-img" alt="image">
+                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
+                        </div>
+                        <div class="cat-content">
+                            <div class="category-title">
+                                <h4>IT & Computer Science</h4>
+                            </div>
+                            <span>03 course(S)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 wow flipInX">
+                <a href="#">
+                    <div class="single-category-item">
+                        <div class="category-image">
+                            <img src="{{ asset('frontend/assets/img/c3.jpg') }}" class="cat-img" alt="image">
+                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
+                        </div>
+                        <div class="cat-content">
+                            <div class="category-title">
+                                <h4>Study Skills</h4>
+                            </div>
+                            <span>03 course(S)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 wow flipInX">
+                <a href="#">
+                    <div class="single-category-item">
+                        <div class="category-image">
+                            <img src="{{ asset('frontend/assets/img/c4.jpg') }}" class="cat-img" alt="image">
+                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
+                        </div>
+                        <div class="cat-content">
+                            <div class="category-title">
+                                <h4>Arts & Photography</h4>
+                            </div>
+                            <span>03 course(S)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 wow flipInX">
+                <a href="#">
+                    <div class="single-category-item">
+                        <div class="category-image">
+                            <img src="{{ asset('frontend/assets/img/c5.jpg') }}" class="cat-img" alt="image">
+                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
+                        </div>
+                        <div class="cat-content">
+                            <div class="category-title">
+                                <h4>Healthcare & Medicine</h4>
+                            </div>
+                            <span>03 course(S)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 wow flipInX">
+                <a href="#">
+                    <div class="single-category-item">
+                        <div class="category-image">
+                            <img src="{{ asset('frontend/assets/img/c6.jpg') }}" class="cat-img" alt="image">
+                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
+                        </div>
+                        <div class="cat-content">
+                            <div class="category-title">
+                                <h4>Science & Engineering</h4>
+                            </div>
+                            <span>03 course(S)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 wow flipInX">
+                <a href="#">
+                    <div class="single-category-item">
+                        <div class="category-image">
+                            <img src="{{ asset('frontend/assets/img/c7.jpg') }}" class="cat-img" alt="image">
+                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
+                        </div>
+                        <div class="cat-content">
+                            <div class="category-title">
+                                <h4>Business Management</h4>
+                            </div>
+                            <span>03 course(S)</span>
+                        </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-3 col-md-6 wow flipInX">
-                <a href="#">
-                    <div class="single-category-item">
-                        <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-2.png') }}" alt="image">
-                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
-                        </div>
-                        <div class="category-title">
-                            <h4>marketing</h4>
-                        </div>
-                        <span>02 course(S)</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow flipInX">
-                <a href="#">
-                    <div class="single-category-item">
-                        <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-3.png') }}" alt="image">
-                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
-                        </div>
-                        <div class="category-title">
-                            <h4>education</h4>
-                        </div>
-                        <span>10 course(S)</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow flipInX">
-                <a href="#">
-                    <div class="single-category-item">
-                        <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-4.png') }}" alt="image">
-                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
-                        </div>
-                        <div class="category-title">
-                            <h4>business</h4>
-                        </div>
-                        <span>04 course(S)</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow flipInX">
-                <a href="#">
-                    <div class="single-category-item">
-                        <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-5.png') }}" alt="image">
-                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
-                        </div>
-                        <div class="category-title">
-                            <h4>psychology</h4>
-                        </div>
-                        <span>04 course(S)</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow flipInX">
-                <a href="#">
-                    <div class="single-category-item">
-                        <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-6.png') }}" alt="image">
-                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
-                        </div>
-                        <div class="category-title">
-                            <h4>UI & UX design</h4>
-                        </div>
-                        <span>04 course(S)</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow flipInX">
-                <a href="#">
-                    <div class="single-category-item">
-                        <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-7.png') }}" alt="image">
-                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
-                        </div>
-                        <div class="category-title">
-                            <h4>technology</h4>
-                        </div>
-                        <span>04 course(S)</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-3 col-md-6 wow flipInX">
-                <a href="#">
-                    <div class="single-category-item">
-                        <div class="category-image">
-                            <img src="{{ asset('frontend/assets/img/category-icon-8.png') }}" alt="image">
-                            <img src="{{ asset('frontend/assets/img/round-shape-3.png') }}" alt="shape" class="feature-round-shape-3">
-                        </div>
-                        <div class="category-title">
-                            <h4>photography</h4>
-                        </div>
-                        <span>04 course(S)</span>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 </section>
 
-{{--  <!-- About Section Starts -->
-<section class="about-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title text-center">
-                    <h2>know about <span>courses</span></h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="about-content-left">
-                    <div class="about-single-content">
-                        <div class="content-top">
-                            <div class="content-icon template-icon green-icon" style="font-family: 'IcoFont' !important;">
-                                <i class="icofont-document-folder"></i>
-                            </div>
-                            <h5>learn anything</h5>
-                        </div>
-                        <p>Explore a variety of fresh topics Podcasting better management inside workflows.</p>
-                    </div>
-                    <div class="about-single-content">
-                        <div class="content-top">
-                            <div class="content-icon template-icon yellow-icon">
-                                <i class="icofont-layers"></i>
-                            </div>
-                            <h5>learn together</h5>
-                        </div>
-                        <p>Explore a variety of fresh topics Podcasting better management inside workflows.</p>
-                    </div>
-                    <div class="about-single-content">
-                        <div class="content-top">
-                            <div class="content-icon template-icon blue-icon">
-                                <i class="icofont-hard-disk"></i>
-                            </div>
-                            <h5>online course</h5>
-                        </div>
-                        <p>Explore a variety of fresh topics Podcasting better management inside workflows.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4" style="padding-top: 140px;">
-                <div class="video-popup-area">
-                    <div class="video-play-button">
-                        <a href="#" class="button-video">
-                            <i class="fa fa-play item-ripple"></i>
-                        </a>
-                    </div>
-                    <img src="{{ asset('frontend/assets/img/about-image.png') }}" style="width:100%;" alt="image">
-                    <div class="image-absolute">
-                        <img src="{{ asset('frontend/assets/img/hero-small-image-4.png') }}" alt="image" class="top-absolute">
-                        <img src="{{ asset('frontend/assets/img/hero-small-image-2.png') }}" alt="image" class="bottom-absolute">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="about-content-right">
-                    <div class="about-single-content">
-                        <div class="content-top">
-                            <div class="content-icon template-icon green-icon">
-                                <i class="icofont-learn"></i>
-                            </div>
-                            <h5>bright mind &amp; idea</h5>
-                        </div>
-                        <p>Explore a variety of fresh topics Podcasting better management inside workflows.</p>
-                    </div>
-                    <div class="about-single-content">
-                        <div class="content-top">
-                            <div class="content-icon template-icon yellow-icon">
-                                <i class="icofont-library"></i>
-                            </div>
-                            <h5>wherever you go</h5>
-                        </div>
-                        <p>Explore a variety of fresh topics Podcasting better management inside workflows.</p>
-                    </div>
-                    <div class="about-single-content">
-                        <div class="content-top">
-                            <div class="content-icon template-icon blue-icon">
-                                <i class="icofont-certificate-alt-1"></i>
-                            </div>
-                            <h5>customer preference</h5>
-                        </div>
-                        <p>Explore a variety of fresh topics Podcasting better management inside workflows.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  --}}
-<section class="about-area3 fix" style="padding-top:30px;">
+<section class="about-area3 fix">
     <div class="support-wrapper align-items-center">
         <div class="right-content3 wow slideInLeft">
             <!-- img -->
@@ -311,120 +215,151 @@
             <div class="col-lg-12">
                 <div class="section-title text-center wow bounceIn">
                     <h2>popular <span>courses</span></h2>
-                </div><hr>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-6 mt-5">
-                <div class="cat_card">
+                <div class="course_card">
+                    <div class="card_img">
+                        <img src="{{ asset('frontend/assets/img/c1.jpg') }}" alt="" class="img-fluid w-100">
+                    </div>
                     <div class="card_container">
                         <div class="course_description">
-                            <i class="fas fa-balance-scale course_icon"></i>
-                            <h4 class="course_title">Financial Course</h4>
-                            <p class="course_price">$ 15000 MMK</p>
+                            <h4 class="course_cat">Economics</h4>
+                            <h3 class="course_title">Financial Course</h3>
                         </div>
-                        <hr>
+                        
                         <div class="course_view">
-                            <div class="desc mb-4">
+                            <div class="desc" style="width:100%;">
                                 <p class="course_play"><i class="fas fa-play-circle"></i>45 Lessons</p>
-                                <p><i class="fas fa-user-circle"></i>23 Students</p>
+                                <p class="course_stud"><i class="fas fa-user-circle"></i>23 Students</p>
                             </div>
-                            <a href="#" class="btn_join">Join Now</a>
+                            <hr>
+                            <div class="desc mb-2">
+                                <p class="course_rating"><i class="fas fa-star"></i> 0 Ratings</p>
+                                <p class="course_price">42000 MMK</p>     
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mt-5">
-                <div class="cat_card">
+                <div class="course_card">
+                    <div class="card_img">
+                        <img src="{{ asset('frontend/assets/img/c1.jpg') }}" alt="" class="img-fluid w-100">
+                    </div>
                     <div class="card_container">
                         <div class="course_description">
-                            <i class="fas fa-business-time course_icon"></i>
-                            <h4 class="course_title">Business Course</h4>
-                            <p class="course_price">$ 25000 MMK</p>
+                            <h4 class="course_cat">Art</h4>
+                            <h3 class="course_title">Business Course</h3>
                         </div>
-                        <hr>
                         <div class="course_view">
-                            <div class="desc mb-4">
+                            <div class="desc" style="width:100%;">
                                 <p class="course_play"><i class="fas fa-play-circle"></i>40 Lessons</p>
-                                <p><i class="fas fa-user-circle"></i>10 Students</p>
+                                <p class="course_stud"><i class="fas fa-user-circle"></i>10 Students</p>
                             </div>
-                            <a href="#" class="btn_join">Join Now</a>
+                            <hr>
+                            <div class="desc mb-2">
+                                <p class="course_rating"><i class="fas fa-star"></i> 0 Ratings</p>
+                                <p class="course_price">42000 MMK</p>     
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mt-5">
-                <div class="cat_card">
+                <div class="course_card">
+                    <div class="card_img">
+                        <img src="{{ asset('frontend/assets/img/c1.jpg') }}" alt="" class="img-fluid w-100">
+                    </div>
                     <div class="card_container">
                         <div class="course_description">
-                            <i class="fas fa-ad course_icon"></i>
-                            <h4 class="course_title">Marketing Course</h4>
-                            <p class="course_price">$ 13000 MMK</p>
+                            <h4 class="course_cat">Analysis</h4>
+                            <h3 class="course_title">Marketing Course</h3>
                         </div>
-                        <hr>
                         <div class="course_view">
-                            <div class="desc mb-4">
+                            <div class="desc" >
                                 <p class="course_play"><i class="fas fa-play-circle"></i>17 Lessons</p>
-                                <p><i class="fas fa-user-circle"></i>17 Students</p>
+                                <p class="course_stud"><i class="fas fa-user-circle"></i>17 Students</p>
                             </div>
-                            <a href="#" class="btn_join">Join Now</a>
+                            <hr>
+                            <div class="desc mb-2">
+                                <p class="course_rating"><i class="fas fa-star"></i> 0 Ratings</p>
+                                <p class="course_price">80000 MMK</p>     
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mt-5">
-                <div class="cat_card">
+                <div class="course_card">
+                    <div class="card_img">
+                        <img src="{{ asset('frontend/assets/img/c1.jpg') }}" alt="" class="img-fluid w-100">
+                    </div>
                     <div class="card_container">
                         <div class="course_description">
-                            <i class="fas fa-code course_icon"></i>
-                            <h4 class="course_title">Programming Course</h4>
-                            <p class="course_price">$ 22000 MMK</p>
+                            <h4 class="course_cat">Engineering</h4>
+                            <h3 class="course_title">Programming Course</h3>
                         </div>
-                        <hr>
                         <div class="course_view">
-                            <div class="desc mb-4">
+                            <div class="desc">
                                 <p class="course_play"><i class="fas fa-play-circle"></i>31 Lessons</p>
-                                <p><i class="fas fa-user-circle"></i>40 Students</p>
+                                <p class="course_stud"><i class="fas fa-user-circle"></i>40 Students</p>
                             </div>
-                            <a href="#" class="btn_join">Join Now</a>
+                            <hr>
+                            <div class="desc mb-2">
+                                <p class="course_rating"><i class="fas fa-star"></i> 0 Ratings</p>
+                                <p class="course_price">42000 MMK</p>     
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mt-5">
-                <div class="cat_card">
+                <div class="course_card">
+                    <div class="card_img">
+                        <img src="{{ asset('frontend/assets/img/c2.png') }}" alt="" class="img-fluid w-100">
+                    </div>
                     <div class="card_container">
                         <div class="course_description">
-                            <i class="fas fa-palette course_icon"></i>
-                            <h4 class="course_title">Drawing Course</h4>
-                            <p class="course_price">$ 38000 MMK</p>
+                            <h4 class="course_cat">Design</h4>
+                            <h3 class="course_title">Drawing Course</h3>
                         </div>
-                        <hr>
                         <div class="course_view">
-                            <div class="desc mb-4">
+                            <div class="desc">
                                 <p class="course_play"><i class="fas fa-play-circle"></i>48 Lessons</p>
-                                <p><i class="fas fa-user-circle"></i>23 Students</p>
+                                <p class="course_stud"><i class="fas fa-user-circle"></i>23 Students</p>
                             </div>
-                            <a href="#" class="btn_join">Join Now</a>
+                            <hr>
+                            <div class="desc mb-2">
+                                <p class="course_rating"><i class="fas fa-star"></i> 0 Ratings</p>
+                                <p class="course_price">42000 MMK</p>     
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 mt-5">
-                <div class="cat_card">
+                <div class="course_card">
+                    <div class="card_img">
+                        <img src="{{ asset('frontend/assets/img/c1.jpg') }}" alt="" class="img-fluid w-100">
+                    </div>
                     <div class="card_container">
                         <div class="course_description">
-                            <i class="fas fa-compact-disc course_icon"></i>
-                            <h4 class="course_title">Music Course</h4>
-                            <p class="course_price">$ 57000 MMK</p>
+                            <h4 class="course_cat">Music</h4>
+                            <h3 class="course_title">Music Course</h3>
                         </div>
-                        <hr>
                         <div class="course_view">
-                            <div class="desc mb-4">
+                            <div class="desc">
                                 <p class="course_play"><i class="fas fa-play-circle"></i>10 Lessons</p>
-                                <p><i class="fas fa-user-circle"></i>23 Students</p>
+                                <p class="course_stud"><i class="fas fa-user-circle"></i>23 Students</p>
                             </div>
-                            <a href="#" class="btn_join">Join Now</a>
+                            <hr>
+                            <div class="desc mb-2">
+                                <p class="course_rating"><i class="fas fa-star"></i> 0 Ratings</p>
+                                <p class="course_price">Free</p>     
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -510,147 +445,21 @@
 </section>
 
 <!-- Instructors Section Starts -->
-{{--  <section class="instructor-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title text-center">
-                    <h2 sty>top online <span>instructors</span></h2>
-                </div><hr>
-            </div>
-        </div>
-        <div class="row owl-carousel">
-            <div class="col-lg-3 col-md-6">
-                <div class="single-instructor">
-                    <span class="instructor-sign">john</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-1.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">john doe</a></h4>
-                        <span>founder CEO</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="single-instructor diffrent-bg-color" style="background-color: #fffcf6 !important;">
-                    <span class="instructor-sign">arya</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-3.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">arya stark</a></h4>
-                        <span>web teacher</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="single-instructor">
-                    <span class="instructor-sign">chris</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-2.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">chris wokes</a></h4>
-                        <span>UI UX teacher</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="single-instructor diffrent-bg-color" style="background-color: #fffcf6 !important;">
-                    <span class="instructor-sign">devid</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-4.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">devid walter</a></h4>
-                        <span>marketing teacher</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="single-instructor">
-                    <span class="instructor-sign">john</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-1.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">john doe</a></h4>
-                        <span>founder CEO</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="instructor-button mt-2 text-center">
-                    <a href="#" class="btn-instructor">see more instructor</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  --}}
 
 <section class="team-area section-padding40 fix">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="section-title text-center wow bounceIn">
-                    <h2 sty>top online <span>instructors</span></h2>
-                </div><hr>
+                    <h2>top online <span>instructors</span></h2>
+                </div>
             </div>
         </div>
         <div class="team-active wow fadeInUp">
             <div class="single-cat text-center">
                 <div class="single-instructor">
-                    <span class="instructor-sign">john</span>
                     <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-1.png') }}" alt="image"></a>
+                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-1.jpg') }}" alt="image"></a>
                     </div>
                     <div class="instructor-content">
                         <h4><a href="#">john doe</a></h4>
@@ -668,9 +477,8 @@
             </div>
             <div class="single-cat text-center">
                 <div class="single-instructor diffrent-bg-color" style="background-color: #fffcf6 !important;">
-                    <span class="instructor-sign">arya</span>
                     <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-3.png') }}" alt="image"></a>
+                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-2.jpg') }}" alt="image"></a>
                     </div>
                     <div class="instructor-content">
                         <h4><a href="#">arya stark</a></h4>
@@ -688,9 +496,8 @@
             </div>
             <div class="single-cat text-center">
                 <div class="single-instructor">
-                    <span class="instructor-sign">chris</span>
                     <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-2.png') }}" alt="image"></a>
+                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-3.jpg') }}" alt="image"></a>
                     </div>
                     <div class="instructor-content">
                         <h4><a href="#">chris wokes</a></h4>
@@ -708,9 +515,8 @@
             </div>
             <div class="single-cat text-center">
                 <div class="single-instructor diffrent-bg-color" style="background-color: #fffcf6 !important;">
-                    <span class="instructor-sign">devid</span>
                     <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-4.png') }}" alt="image"></a>
+                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-4.jpg') }}" alt="image"></a>
                     </div>
                     <div class="instructor-content">
                         <h4><a href="#">devid walter</a></h4>
@@ -728,9 +534,8 @@
             </div>
             <div class="single-cat text-center">
                 <div class="single-instructor">
-                    <span class="instructor-sign">john</span>
                     <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-1.png') }}" alt="image"></a>
+                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-5.jpg') }}" alt="image"></a>
                     </div>
                     <div class="instructor-content">
                         <h4><a href="#">john doe</a></h4>
@@ -746,99 +551,18 @@
                     </div>
                 </div>
             </div>
-            <div class="single-cat text-center">
-                <div class="single-instructor diffrent-bg-color" style="background-color: #fffcf6 !important;">
-                    <span class="instructor-sign">arya</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-3.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">arya stark</a></h4>
-                        <span>web teacher</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="single-cat text-center">
-                <div class="single-instructor">
-                    <span class="instructor-sign">chris</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-2.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">chris wokes</a></h4>
-                        <span>UI UX teacher</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="single-cat text-center">
-                <div class="single-instructor diffrent-bg-color" style="background-color: #fffcf6 !important;">
-                    <span class="instructor-sign">devid</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/instructor-4.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">devid walter</a></h4>
-                        <span>marketing teacher</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            {{--  <div class="single-cat text-center">
-                <div class="single-instructor">
-                    <span class="instructor-sign">saiful</span>
-                    <div class="instructor-image">
-                        <a href="#"><img src="{{ asset('frontend/assets/img/gallery/team3.png') }}" alt="image"></a>
-                    </div>
-                    <div class="instructor-content">
-                        <h4><a href="#">Mr. saiful</a></h4>
-                        <span>founder CEO</span>
-                    </div>
-                    <div class="hover-state">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>  --}}
         </div><br>
         <div class="row">
             <div class="col-lg-12">
                 <div class="instructor-button mt-2 text-center">
-                    <a href="#" class="btn-instructor">see more instructor</a>
+                    <a href="#" class="btn btn3">View all Instructor</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-        <script>
+<script>
             const video = document.getElementById("video");
             const circlePlayButton = document.getElementById("circle-play-b");
 
@@ -864,108 +588,5 @@
                     time: 1000
                 });
             });
-        </script>
-@endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{--  <script>
-    const video = document.getElementById("video");
-    const circlePlayButton = document.getElementById("circle-play-b");
-
-    function togglePlay() {
-        if (video.paused || video.ended) {
-            video.play();
-        } else {
-            video.pause();
-        }
-    }
-
-    circlePlayButton.addEventListener("click", togglePlay);
-    video.addEventListener("playing", function () {
-        circlePlayButton.style.opacity = 0;
-    });
-    video.addEventListener("pause", function () {
-        circlePlayButton.style.opacity = 1;
-    });
 </script>
-<script>
-    jQuery(document).ready(function($) {
-        $('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
-    });
-
-    $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:10,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-                nav:true
-            },
-            600:{
-                items:3,
-                nav:false
-            },
-            1000:{
-                items:4,
-                nav:true,
-                loop:false
-            }
-        }
-    })
-
-    $('.responsive').slick({
-        infinite: false,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-          // You can unslick at a given breakpoint now by adding:
-          // settings: "unslick"
-          // instead of a settings object
-        ]
-      });
-</script>  --}}
+@endsection

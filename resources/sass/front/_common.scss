@@ -219,7 +219,7 @@ hr {
 	font-weight: 600;
 	border-radius: 5px;
 	line-height: 1;
-
+	user-select: none;
 	-moz-user-select: none;
 	letter-spacing: 1px;
 	line-height: 0;
@@ -378,7 +378,7 @@ hr {
 	border-radius: 5px;
 	text-transform: capitalize;
 	padding: 17px 42px;
-
+	user-select: none;
 	-moz-user-select: none;
 	cursor: pointer;
 	display: inline-block;
@@ -502,6 +502,7 @@ hr {
 	}
 /* Sticky*/
 	.sticky-bar {
+		display: none;
 		left: 0;
 		margin: auto;
 		position: fixed;
@@ -575,6 +576,7 @@ hr {
 .bounce-animate{
 	animation-name: float-bob;
 	animation-duration: 2s;
+	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	/* animation-timing-function: linear; */
 	-moz-animation-name: float-bob;
@@ -590,20 +592,17 @@ hr {
 	-o-animation-iteration-count: infinite;
 	-o-animation-timing-function: linear;
 	}
-  @-webkit-keyframes float-bob {
-	0% {
-	  -webkit-transform: translateY(-20px);
-	  transform: translateY(-20px); }
-	50% {
-	  -webkit-transform: translateY(-10px);
-	  transform: translateY(-10px); }
-	100% {
-	  -webkit-transform: translateY(-20px);
-	  transform: translateY(-20px); } }
+
 
 /* heartbeat */
 	.heartbeat {
 		animation: heartbeat 1s infinite alternate;
+	}
+	@keyframes heartbeat{
+		to {
+			-webkit-transform: scale(1.03);
+			transform: scale(1.03);
+		}
 	}
 
 	@-webkit-keyframes heartbeat {
@@ -991,20 +990,7 @@ hr {
 	@media #{$sm}{
 		margin-bottom: 50px;
 	}
-	span{
-		// font-size: 18px;
-		// font-weight: 700;
-		// margin-bottom: 22px;
-		// color:$theme-color;
-		// text-transform:capitalize;
-		// display: inline-block;
-		// letter-spacing: 0.05em;
-		// @media #{$xs}{
-		// 	font-size: 14px;
-		// 	padding-left: 0px;
 
-		// }
-	}
 	h2 {
 		font-size: 42px;
 		display: block;
@@ -1021,9 +1007,7 @@ hr {
 			font-size: 27px;
 		}
 	}
-	 p {
 
-	}
 }
 
 // section Tittle
@@ -1071,4 +1055,11 @@ hr {
 }
 .border-bottom{
 	border-bottom: 1px solid #ECEBF0;
+}
+
+
+.btn.btn3 {
+	border: 1px solid #94cc9b!important;
+	border-radius: 30px!important;
+	color: #2a435d!important;
 }
