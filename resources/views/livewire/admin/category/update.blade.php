@@ -24,14 +24,14 @@
        
                     <div class="form-group mb-3">
                         <label for="icon">Icon</label>
-                        @if($updatedIcon)
-                            <img src="{{ $updatedIcon->temporaryUrl() }}" alt="" style="max-width:100%;width:60px;" >
+                        @if($updatedImage)
+                            <img src="{{ $updatedImage->temporaryUrl() }}" alt="" style="max-width:100%;width:60px;" >
                         @else
                             <img src="{{ asset('storage/categories/'.$icon) }}" alt="" style="max-width:100%;width:60px;">
                         @endif
 
-                        <input wire:model="updatedIcon" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" id="icon">
-                        @error('icon') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="updatedImage" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" value="">
+                        @error('updatedImage') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group pt-3">
                         <label for="description">Description</label>
@@ -50,7 +50,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary close-btn" data-dismiss="modal">Cancel</button>
                 <button type="button" wire:click.prevent="update()" class="btn btn-success close-modal" data-dismiss="modal">Save changes</button>
             </div>
         </div>

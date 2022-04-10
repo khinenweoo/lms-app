@@ -1,12 +1,14 @@
-.change-avatar , .add-avatar{
+.upload-photo, .change-avatar , .add-avatar{
     display: flex;
     align-items: center;
     -webkit-box-align: center;
 }
+.upload-photo .preview-img,
 .change-avatar .profile-img,
 .add-avatar .profile-img {
     margin-right: 15px;
 }
+.upload-photo .preview-img img,
 .change-avatar .profile-img img,
 .add-avatar .profile-img img{
     border-radius: 5px;

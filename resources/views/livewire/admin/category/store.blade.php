@@ -19,8 +19,8 @@
                     </div>
        
                     <div class="form-group mb-3">
-                        <label for="icon">Icon</label>
-                        <input wire:model="icon" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}" id="icon" value="{{ $icon ? '$icon': '' }}">
+                        <label for="image">Icon</label>
+                        <input wire:model="icon" type="file" class="form-control {{ $errors->has('icon') ? ' is-invalid' : '' }}">
                         @error('icon') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group pt-3">
@@ -33,7 +33,8 @@
                             <label for="status">Status</label>
                             <select wire:model="status" class="form-control {{ $errors->has('status') ? ' is-invalid' : '' }}">
                                 <span></span>
-                                <option value="1" selected>Enabled</option>
+                                <option value="0" selected>Select Status</option>
+                                <option value="1" >Enabled</option>
                                 <option value="0">Disabled</option>
                             </select>
                             @error('status') <span class="text-danger error">{{ $message }}</span> @enderror
@@ -41,7 +42,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary close-btn" data-dismiss="modal">Cancel</button>
                 <button type="button" wire:click.prevent="store()" class="btn btn-success close-modal">Save changes</button>
             </div>
         </div>

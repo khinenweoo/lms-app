@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="text-default mb-0">Setup your Course</h3>
+                                <h3 class="text-default mb-0">Update your Course</h3>
                             </div>
                         </div>
                     </div>
@@ -17,9 +17,16 @@
                             Fill each section and click 'Next' to continue. Fields marked * are required 
                         </p>
 
+
                         @if($currentStep == 1)
                         <section id="step1">
-                           
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input wire:model="courseId" type="hidden">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -74,9 +81,29 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="control-label">Course Cover Image(Max image size 2MB)</label>
-                                        <input wire:model="cover_image" type="file" class="form-control {{ $errors->has('cover_image') ? ' is-invalid' : '' }}">
-                                        @error('cover_image') <span class="text-danger error">{{ $message }}</span>@enderror
+                                        <div class="upload-photo">
+                                            <div class="preview-img">
+                                                    @if(empty($cover_image))
+                                                        <img src="asset('storage/courses/default-course.png')" alt="">
+                                                    @elseif($new_cover)
+                                                        <img src="{{$new_cover->temporaryUrl()}}"/>
+                                                    @else
+                                                        <img src="{{asset('storage/courses')}}/{{$cover_image}}"/>
+                                                    @endif
+                                            </div>
+                                            <div class="upload-img">
+                                                <div class="change-photo-btn btn-form">
+                                                        <span>
+                                                            <i class="fa fa-upload"></i>
+                                                            Upload Photo
+                                                        </span>
+                                                        <input type="file" class="upload" wire:model="new_cover" >
+                                                        @error('new_cover') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                </div>
+                                                <small class="form-text text-muted">Allowed JPG or PNG.Max size of 2MB</small>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -143,8 +170,8 @@
                                 <div class="col-xl-6">
                                     <label for="status">Status</label>
                                     <select wire:model="status"  class="form-control">
-                                        <option value="0">Disabled</option>
-                                        <option value="1" selected>Enabled</option>
+                                        <option value="disabled">Disabled</option>
+                                        <option value="enabled" selected>Enabled</option>
                                     </select>
                                     @error('status') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>

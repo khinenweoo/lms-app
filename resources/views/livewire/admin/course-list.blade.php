@@ -106,6 +106,7 @@
                                         <th scope="col">Category</th>
                                         <th scope="col">Instructor</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Close Date</th>
                                         <th scope="col">Lessons</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -123,6 +124,8 @@
                                                 <span class="custom-toggle-slider rounded-circle"></span>
                                                 </label>
                                             </td>
+
+                                            <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $course->enroll_close_date )->format('d/M/Y') }}</td>
                                             <td>Lessons</td>
                                             <td>
                                                 <a href="{{route('admin.course.edit',['course_slug' => $course->slug])}}" class="btn btn-primary btn-sm" title="Edit Course" style="border-radius:14px;padding:.35rem .5rem;">

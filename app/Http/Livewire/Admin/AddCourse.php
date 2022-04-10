@@ -40,7 +40,6 @@ class AddCourse extends Component
         ])->layout('layouts.livewirebase');
     }
 
-
     public function validateInfo()
     {
         if($this->currentStep == 1){
@@ -76,6 +75,7 @@ class AddCourse extends Component
     */
     public function store() 
     {
+
         
         if($this->slug == "" || $this->slug == null) {
             $slug = Str::slug($this->name);
@@ -117,6 +117,7 @@ class AddCourse extends Component
         
             return redirect()->route('admin.courses');
         }
+
     }
 
     public function increaseStep()
@@ -142,7 +143,10 @@ class AddCourse extends Component
 
     public function photoUpload($image)
     {
-        $file_name = 'C_'.$image->getClientOriginalName();
+        $str = Str::random(10);
+        $ext = strtolower($image->getClientOriginalExtension());
+        $file_name = $str.'.'.$ext;
+        // $file_name = 'C_'.$image->getClientOriginalName();
         $image->storeAs('courses', $file_name, 'public');
 
         return $file_name;

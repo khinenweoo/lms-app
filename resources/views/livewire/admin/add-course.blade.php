@@ -74,9 +74,29 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label class="control-label">Course Cover Image(Max image size 2MB)</label>
-                                        <input wire:model="cover_image" type="file" class="form-control {{ $errors->has('cover_image') ? ' is-invalid' : '' }}">
-                                        @error('cover_image') <span class="text-danger error">{{ $message }}</span>@enderror
+                                        <div class="upload-photo">
+                                            <div class="preview-img">
+                                                    @if(empty($cover_image))
+                                                        <img src="asset('storage/courses/default-course.png')" alt="">
+                                                    @elseif($cover_image)
+                                                        <img src="{{$cover_image->temporaryUrl()}}"/>
+                                                    @else
+                                                        <img src="{{asset('storage/courses')}}/{{$cover_image}}"/>
+                                                    @endif
+                                            </div>
+                                            <div class="upload-img">
+                                                <div class="change-photo-btn btn-form">
+                                                        <span>
+                                                            <i class="fa fa-upload"></i>
+                                                            Upload Photo
+                                                        </span>
+                                                        <input type="file" class="upload" wire:model="cover_image" >
+                                                        @error('cover_image') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                </div>
+                                                <small class="form-text text-muted">Allowed JPG or PNG.Max size of 2MB</small>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

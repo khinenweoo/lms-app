@@ -99,7 +99,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Icon</th>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Slug</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Created Date</th>

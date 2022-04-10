@@ -27,9 +27,10 @@ class CategoryComponent extends Component
     public $icon;
     public $description;
     public $status;
-    public $updatedIcon = null;
+    public $updatedImage = null;
     public $updateMode = false;
     public $deleteId;
+    public $iteration;
 
     public function render()
     {
@@ -56,7 +57,7 @@ class CategoryComponent extends Component
     {
         $validateData = $this->validate([
             'name' => ['required', 'unique:categories,name'],
-            'icon' => ['nullable', 'image', 'mimes:png','max:3000'],
+            'icon' => ['nullable', 'image', 'mimes:jpg,png','max:3000'],
             'description' => ['string'],
         ]);
 
@@ -74,8 +75,11 @@ class CategoryComponent extends Component
             'status' => $this->status,
         ]);
 
-        session()->flash('message', 'Category Created Successfully');
+
         $this->resetInput();
+        $this->reset('icon');
+
+        session()->flash('message', 'Category Created Successfully');
         $this->emit('categoryCreateModal'); // Close model to using to jquery
     }
 
@@ -108,8 +112,8 @@ class CategoryComponent extends Component
     }
     public function cancel()
     {
-        $this->updateMode = false;
         $this->resetInput();
+        $this->updateMode = false;
     }
     /**
      * Update the Category resource in storage.
@@ -121,10 +125,10 @@ class CategoryComponent extends Component
     public function update()
     {
         if($this->category_id) {
-            $category = Category::find($this->category_id);
+            $category = Category::findOrFail($this->category_id);
 
-            if($this->updatedIcon) {
-                $icon_file = $this->iconImageUpload($this->updatedIcon);
+            if($this->updatedImage) {
+                $icon_file = $this->iconImageUpload($this->updatedImage);
             }else {
                 $icon_file = 'default.png';
             }
@@ -137,9 +141,13 @@ class CategoryComponent extends Component
                 'status' => $this->status,
             ]);
 
+            $this->resetInput();
+            //cleanup file name after upload 
+            $this->reset('updatedImage');
+
             $this->updateMode = false;
             session()->flash('message', 'Category updated.');
-            $this->resetInput();
+
             $this->emit('categoryUpdateModal');
         }
     }

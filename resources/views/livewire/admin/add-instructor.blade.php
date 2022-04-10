@@ -20,6 +20,8 @@
                                             <div class="profile-img">
                                                 @if(empty($photo))
                                                     <img src="asset('storage/instructors/default-avatar.png')" alt="">
+                                                @elseif($photo)
+                                                    <img src="{{$photo->temporaryUrl()}}"/>
                                                 @else
                                                     <img src="{{asset('storage/instructors')}}/{{$photo}}"/>
                                                 @endif

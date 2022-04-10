@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input wire:model="instructorId" type="hidden" placeholder="InstructorId" class="form-control {{ $errors->has('instructorId') ? ' is-invalid' : '' }}">
+                                        <input wire:model="courseId" type="hidden" placeholder="InstructorId">
                                     </div>
                                 </div>
                             </div>
