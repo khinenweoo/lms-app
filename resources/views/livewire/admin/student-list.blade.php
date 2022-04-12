@@ -1,12 +1,12 @@
 <div class="overflow-hidden">
-    <div class="header bg-gradient-green pb-7 pt-5">
+    <div class="header bg-dark-green pb-7 pt-5">
         <div class="container-fluid">
             <div class="header-body">
             <div class="card shadow mt-5 mb-3">
-                    <div class="card-header p-3 border-0">
+                    <div class="card-header header-bg p-3 border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="text-default mb-0">Register Student List</h3>
+                                <h3 class="text-default mb-0">Student List</h3>
                             </div>
                             <div class="col">
                                 <div class="section-header-breadcrumb d-flex justify-content-end" style="margin-left:auto;">
@@ -17,7 +17,7 @@
                                         <a href="#" style="font-size:12px;color:#828bb2;">Students</a>
                                     </div>
                                     <div class="breadcrumb-item">
-                                        <a href="{{route('admin.students')}}" class="text-default" style="font-size:12px;">Register Student List</a>
+                                        <a href="{{route('admin.students')}}" class="text-default" style="font-size:12px;">Student List</a>
                                     </div>
                                 </div>
                             </div>
@@ -84,29 +84,34 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">Courses</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($students as $student)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
-                                            @if($user->avatar_photo() == null)
+                                            <td>{{ $student->id }}</td>
+                                            @if($student->photo() == null)
                                             <td ><img src="{{ asset('storage/students/defaultavatar.png') }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
                                             @else
-                                            <td ><img src="{{ asset('storage/students/'.$user->avatar_photo()) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
+                                            <td ><img src="{{ asset('storage/students/'.$student->photo()) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
                                             @endif
-                                            <td>{{ $user->name() }}</td>
-                                            <td>{{ $user->email() }}</td>
-                                            <td>{{ $user->phone() }}</td>
-                                            <td><a href="{{ route('admin.students.view',['user_id'=>$user->id]) }}" class="btn btn-primary btn-sm" title="Edit Category" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="fa fa-edit" style="font-size: 20px;"></i>
+                                            <td>{{ $student->name() }}</td>
+                                            <td>{{ $student->email() }}</td>
+                                            <td>{{ $student->phone() }}</td>
+                                            <td>{{ $student->gender() }}</td>
+                                            <td>0</td>
+                                            <td><a href="{{ route('admin.student.edit',['student_id'=>$student->id]) }}" class="btn btn-primary btn-sm" title="Edit Student" style="border-radius:14px;padding:.35rem .5rem;">
+                                                    <i class="fa fa-edit"></i>
                                                 </a>
-                                                <button type="button" wire:click.prevent="confirmDelete({{ $user->id }})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Category" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="fa fa-trash" style="font-size: 20px;"></i>
+                                            
+                                                <button type="button" wire:click.prevent="show({{ $student->id }})" data-toggle="modal" data-target="#modal-approve" class="btn btn-primary btn-sm" title="Student Approve" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <i class="fa fa-plus"></i>
                                                 </button>
-                                                <button type="button" wire:click.prevent="show({{ $user->id }})" data-toggle="modal" data-target="#modal-approve" class="btn btn-success btn-sm" title="Student Approve" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="fa fa-thumbs-up" style="font-size: 20px;"></i>
+                                                <button type="button" wire:click.prevent="confirmDelete({{ $student->id }})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Category" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <i class="fa fa-trash-alt"></i>
                                                 </button>
                                             </td>
                                         </tr>

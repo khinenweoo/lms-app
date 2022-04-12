@@ -6,7 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
 
-class RegisterStudent extends Component
+class StudentList extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -16,16 +16,18 @@ class RegisterStudent extends Component
     public $orderBy = 'id';
     public $orderAsc = 'asc';
     public $name, $email, $phone;
-    protected $users;
+    protected $students;
 
     public function render()
     {
-        $this->users = $this->searchStudents();
+        $this->students = $this->searchStudents();
 
-        return view('livewire.admin.register-student', [
-            'users' => $this->users,
+
+        return view('livewire.admin.student-list', [
+            'students' => $this->students,
         ])->layout('layouts.livewirebase');
     }
+
     public function searchStudents()
     {
         $users =  User::search($this->search)
@@ -33,8 +35,9 @@ class RegisterStudent extends Component
 
         return $users;
     }
+
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing Student resource
      *
      * @param int $id
      * @return Response
@@ -46,6 +49,7 @@ class RegisterStudent extends Component
         $this->email = $student->email;
         $this->phone = $student->phone;
     }
+
     public function cancel()
     {
         $this->updateMode = false;
@@ -63,6 +67,7 @@ class RegisterStudent extends Component
             session()->flash('message', 'Student deleted.');
         }
     }
+
     public function resetInput()
     {
         $this->reset('name', 'email', 'phone');

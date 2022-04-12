@@ -20,7 +20,11 @@ class InstructorsTableSeeder extends Seeder
             'email' => 'instructor@lms.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret123'),
+            'dateofbirth' => '1990-03-12',
+            'gender' => 'male',
             'photo' => 'default.jpg',
+            'phone' => '091230345',
+            'status' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -30,7 +34,11 @@ class InstructorsTableSeeder extends Seeder
             'email' => 'aeginstructor@lms.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret123'),
+            'dateofbirth' => '1994-04-08',
+            'gender' => 'male',
             'photo' => 'default.jpg',
+            'phone' => '0912345678',
+            'status' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);

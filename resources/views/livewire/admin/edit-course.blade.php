@@ -160,7 +160,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <label for="status">Duration Length</label>
+                                    <label for="duration_length">Duration Length</label>
                                     <input wire:model="duration_length" type="text" class="form-control {{ $errors->has('duration_length') ? ' is-invalid' : '' }}">
                                     @if ($errors->has('duration_length'))
                                         <span class="text-danger">{{ $errors->first('duration_length') }}</span>

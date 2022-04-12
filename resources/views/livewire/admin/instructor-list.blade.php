@@ -1,9 +1,9 @@
 <div class="overflow-hidden">
-    <div class="header bg-gradient-green pb-7 pt-5">
+    <div class="header bg-dark-green pb-7 pt-5">
         <div class="container-fluid">
             <div class="header-body">
             <div class="card shadow mt-5 mb-3">
-                    <div class="card-header p-3 border-0">
+                    <div class="card-header header-bg p-3 border-0">
                         <div class="row align-items-center">
                             <div class="col">
                                 <h3 class="text-default mb-0">Instructor List</h3>
@@ -14,7 +14,7 @@
                                         <a href="{{route('admin.dashboard')}}" style="font-size:12px;color:#828bb2;">Dashboard</a>
                                     </div>
                                     <div class="breadcrumb-item">
-                                        <a href="#" style="font-size:12px;color:#828bb2;">Instructors</a>
+                                        <a href="{{route('admin.instructors')}}" style="font-size:12px;color:#828bb2;">Instructors</a>
                                     </div>
                                     <div class="breadcrumb-item">
                                         <a href="{{route('admin.instructors')}}" class="text-default" style="font-size:12px;">Instructor List</a>
@@ -44,7 +44,7 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-md-3 col-12">
-                                    <a class="btn btn-icon btn-3 btn-success" href="{{ route('admin.instructor.add') }}">
+                                    <a class="btn btn-sm btn-icon btn-3 btn-primary" href="{{ route('admin.instructor.add') }}">
                                         <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
                                         <span class="btn-inner--text">Add Instructor</span>
                                     </a>
@@ -67,8 +67,8 @@
                                                     <option value="id">ID</option>
                                                     <option value="name">Name</option>
                                                     <option value="email">Email Address</option>
-                                                    <option value="dateofbirth">Date of Birth</option>
                                                     <option value="phone">Phone</option>
+                                                    <option value="gender">Gender</option>
                                                 </select>
                                             </div>
                                             <!-- Order Asc -->
@@ -90,16 +90,19 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th scope="col">ID</th>
                                         <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Gender</th>
+                                        <th scope="col">Courses</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -107,9 +110,13 @@
                                 <tbody>
                                     @foreach ($instructors as $instructor)
                                         <tr>
+                                            <td>{{ $instructor->id }}</td>
                                             <td ><img src="{{ asset('storage/instructors/'.$instructor->photo()) }}" class="img-fluid" style="max-width:100%;width:60px;" alt=""></td>
                                             <td>{{ $instructor->name() }}</td>
                                             <td>{{ $instructor->email() }}</td>
+                                            <td>{{ $instructor->phone() }}</td>
+                                            <td>{{ $instructor->gender() }}</td>
+                                            <td>0</td>
                                             <td>
                                                 <label class="custom-toggle">
                                                 <input type="checkbox" {{ $instructor->status === 1? 'checked': '' }} disabled >

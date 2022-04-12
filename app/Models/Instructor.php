@@ -72,7 +72,7 @@ class Instructor extends Authenticatable
         return Carbon::createFromFormat('Y-m-d', $this->attributes['dateofbirth'])->format('m/d/Y');
     }
 
-    public function gender(): enum
+    public function gender()
     {
         return $this->gender;
     }
@@ -140,7 +140,7 @@ class Instructor extends Authenticatable
         : static::query()->where('id', 'like', '%'. $search.'%')
         ->orWhere('name', 'like', '%'.$search.'%')
         ->orWhere('email', 'like', '%'.$search.'%')
-        ->orWhere('dateofbirth', 'like', '%'.$search.'%')
-        ->orWhere('phone', 'like', '%'.$search.'%');
+        ->orWhere('phone', 'like', '%'.$search.'%')
+        ->orWhere('gender', 'like', '%'.$search.'%');
     }
 }

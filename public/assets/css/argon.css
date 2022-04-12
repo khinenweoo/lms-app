@@ -5766,9 +5766,11 @@ input[type='button'].btn-block
 {
     margin-bottom: 0;
     padding: 1.25rem 1.5rem;
-
     border-bottom: 1px solid rgba(0, 0, 0, .05);
     background-color: #fff;
+}
+.header-bg {
+    background-color: #f5f5f5;
 }
 .card-header:first-child
 {
@@ -15144,7 +15146,10 @@ button.bg-lighter:focus
 {
     background: linear-gradient(87deg, #ffd600 0, #beff00 100%) !important;
 }
-
+.bg-dark-green
+{
+    background: #609d83;
+}
 .bg-gradient-green
 {
     background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
@@ -16479,7 +16484,7 @@ a.text-yellow:focus
 
 .text-green
 {
-    color: #2dce89 !important;
+    color: #609d83 !important;
 }
 
 a.text-green:hover,
@@ -16862,7 +16867,7 @@ a.text-lighter:focus
 .btn-sm,
 .btn-group-sm > .btn
 {
-    font-size: .75rem;
+    font-size: .85rem;
 }
 
 .btn-lg,

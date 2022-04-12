@@ -1,9 +1,9 @@
 <div class="overflow-hidden">
-    <div class="header bg-gradient-green pb-7 pt-5">
+    <div class="header bg-dark-green pb-7 pt-5">
         <div class="container-fluid">
             <div class="header-body">
             <div class="card shadow mt-5 mb-3">
-                    <div class="card-header p-3 border-0">
+                    <div class="card-header header-bg p-3 border-0">
                         <div class="row align-items-center">
                             <div class="col">
                                 <h3 class="text-default mb-0">Course List</h3>
@@ -45,7 +45,7 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-md-3 col-12">
-                                    <a class="btn btn-icon btn-3 btn-success" href="{{route('admin.course.add')}}">
+                                    <a class="btn btn-sm btn-icon btn-3 btn-primary" href="{{route('admin.course.add')}}">
                                         <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>                             
                                         <span class="btn-inner--text">Add Course</span>
                                     </a>
@@ -106,7 +106,6 @@
                                         <th scope="col">Category</th>
                                         <th scope="col">Instructor</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Close Date</th>
                                         <th scope="col">Lessons</th>
                                         <th scope="col">Actions</th>
                                     </tr>
@@ -124,8 +123,8 @@
                                                 <span class="custom-toggle-slider rounded-circle"></span>
                                                 </label>
                                             </td>
-
-                                            <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $course->enroll_close_date )->format('d/M/Y') }}</td>
+                                            <!-- enroll close date column -->
+                                            <!-- <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $course->enroll_close_date )->format('d/M/Y') }}</td> -->
                                             <td>Lessons</td>
                                             <td>
                                                 <a href="{{route('admin.course.edit',['course_slug' => $course->slug])}}" class="btn btn-primary btn-sm" title="Edit Course" style="border-radius:14px;padding:.35rem .5rem;">

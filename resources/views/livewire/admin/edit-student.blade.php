@@ -12,12 +12,12 @@
                     </div>
                     <div class="card-body">
                     <ul class="nav nav-pills" id="myTab3" role="tablist">
-                        <li class="nav-item"  wire:ignore>
-                            <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="true">Student Details</a>
-                        </li>
-                        <li class="nav-item"  wire:ignore>
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Change Password</a>
-                        </li>
+                                <li class="nav-item"  wire:ignore>
+                                    <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="true">Student Details</a>
+                                </li>
+                                <li class="nav-item"  wire:ignore>
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Change Password</a>
+                                </li>
                     </ul>
 
                     <div class="tab-content">
@@ -90,8 +90,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                             </div>
-                                            <input wire:model="dateofbirth" class="form-control datepicker" name="dateofbirth" id="dateofbirth" placeholder="Select date" type="text" style="padding-left:15px;">
-                                            @error('dateofbirth') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <input wire:model="dob" class="form-control datepicker" name="dob" id="dob" placeholder="Select date" type="text" style="padding-left:15px;">
+                                            @error('dob') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                 </div>
@@ -108,36 +108,20 @@
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <textarea wire:model="address" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" rows="2"></textarea>
-
                                         @error('address') <span class="text-danger error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xl-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Facebook URL</label>
-                                        <input wire:model="facebook_link" type="text" class="form-control {{ $errors->has('facebook_link') ? ' is-invalid' : '' }}" >
-                                        @error('facebook_link') <span class="text-danger error">{{ $message }}</span>@enderror
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Linkedin URL</label>
-                                        <input wire:model="linkedin_link" type="text" class="form-control {{ $errors->has('linkedin_link') ? ' is-invalid' : '' }}" >
-                                        @error('linkedin_link') <span class="text-danger error">{{ $message }}</span>@enderror
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
                                         <div class="change-avatar">
                                             <div class="profile-img">
-                                                @if($newphoto)
-                                                    <img src="{{$newphoto->temporaryUrl()}}"/>
+                                                @if($new_avatar)
+                                                    <img src="{{$new_avatar->temporaryUrl()}}"/>
                                                 @else
-                                                    <img src="{{asset('storage/instructors')}}/{{$photo}}"/>
+                                                    <img src="{{asset('storage/students')}}/{{$photo}}"/>
                                                 @endif
                                             </div>
                                             <div class="upload-img">
@@ -146,8 +130,8 @@
                                                         <i class="fa fa-upload"></i>
                                                         Upload Photo
                                                     </span>
-                                                    <input type="file" class="upload" wire:model="newphoto" >
-                                                    @error('newphoto') <span class="text-danger error">{{ $message }}</span>@enderror
+                                                    <input type="file" class="upload" wire:model="new_avatar" >
+                                                    @error('new_avatar') <span class="text-danger error">{{ $message }}</span>@enderror
                                                 </div>
                                                 <small class="form-text text-muted">Allowed JPG or PNG.Max size of 2MB</small>
                                             </div>
@@ -207,7 +191,7 @@
         format: 'MM/DD/YYYY'
         });
         $(".datepicker").on("change", function(e) {
-        @this.set('dateofbirth', e.target.value)
+        @this.set('dob', e.target.value)
         });
     });
     </script>

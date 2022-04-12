@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -31,10 +32,11 @@ class User extends Authenticatable
         'password',
         'dob',
         'gender',
-        'avatar_photo',
+        'photo',
         'phone',
         'address',
         'about',
+        'status',
     ];
 
     public function id(): int
@@ -57,13 +59,23 @@ class User extends Authenticatable
     {
         return $this->dob;
     }
-    public function gender(): enum
+    public function setDobAttribute($value)
+    {
+        $this->attributes['dob'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+    }
+
+    public function getDobAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['dob'])->format('m/d/Y');
+    }
+
+    public function gender()
     {
         return $this->gender;
     }
-    public function avatar_photo()
+    public function photo()
     {
-        return $this->avatar_photo;
+        return $this->photo;
     }
     public function phone(): string
     {
@@ -73,9 +85,13 @@ class User extends Authenticatable
     {
         return $this->address;
     }
-    public function about(): text
+    public function about(): string
     {
         return $this->about;
+    }
+    public function status()
+    {
+        return $this->status;
     }
     public function createdAt(): string
     {
@@ -107,6 +123,7 @@ class User extends Authenticatable
         : static::query()->where('id', 'like', '%'. $search.'%')
         ->orWhere('name', 'like', '%'.$search.'%')
         ->orWhere('email', 'like', '%'.$search.'%')
-        ->orWhere('phone', 'like', '%'.$search.'%');
+        ->orWhere('phone', 'like', '%'.$search.'%')
+        ->orWhere('gender', 'like', '%'.$search.'%');
     }
 }

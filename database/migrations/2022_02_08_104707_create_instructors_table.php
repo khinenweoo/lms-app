@@ -28,7 +28,7 @@ class CreateInstructorsTable extends Migration
             $table->text('facebook_link')->nullable();
             $table->text('twitter_link')->nullable();
             $table->text('linkedin_link')->nullable();
-            $table->integer('status')->default(1)->comment('0 - disabled, 1 - enabled');
+            $table->integer('status')->default(0)->comment('0 - disabled, 1 - enabled');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
