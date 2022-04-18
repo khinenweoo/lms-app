@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Course;
+use App\Exports\CoursesExport;
 
 class CourseList extends Component
 {
@@ -40,7 +41,12 @@ class CourseList extends Component
         Course::whereKey($this->checked)->delete();
         $this->checked = [];
         session()->flash('message', 'Selected records deleted successfully.');
-    
+    }
+
+    public function exportSelected()
+    {
+        return (new CoursesExport($this->checked))->download('courses.xlsx');
+
     }
 
 }
