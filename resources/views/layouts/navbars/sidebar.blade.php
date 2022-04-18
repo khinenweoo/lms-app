@@ -159,6 +159,11 @@
                                     {{ __('Pending Courses') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.lessons')}}">
+                                    {{ __('Lessons') }}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -189,7 +194,7 @@
             <img src="{{ asset('assets') }}/img/brand/logo.jpeg" style="width: 80px;max-width:100%;" class="navbar-brand-img" alt="">
             LMS TRAIN
         </a>
-        <!-- User -->
+        <!-- Admin User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -325,17 +330,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">
-                                    {{ __('Course Level') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
                                     {{ __('Active Courses') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    {{ __('Pending Courses') }}
+                                <a class="nav-link" href="{{route('admin.lessons')}}">
+                                    {{ __('Lessons') }}
                                 </a>
                             </li>
                         </ul>

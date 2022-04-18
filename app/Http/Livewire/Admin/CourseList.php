@@ -17,20 +17,30 @@ class CourseList extends Component
     public $orderAsc = 'asc';
     protected $courses;
 
+    public $checked = [];
+
     public function render()
     {
-        $this->courses = $this->searchCourses();
         return view('livewire.admin.course-list', [
-            'courses' => $this->courses,
+            'courses' => Course::with(['category','instructor'])
+            ->search(trim($this->search))
+            ->orderBy($this->orderBy, $this->orderAsc)
+            ->paginate($this->perPage),
         ])->layout('layouts.livewirebase');
     }
 
-    public function searchCourses()
+    // Check selected id is in checked array and style row with primary color
+    public function isChecked($course_id) 
     {
-        $courses =  Course::search($this->search)
-        ->orderBy($this->orderBy, $this->orderAsc)
-        ->paginate($this->perPage);
-
-        return $courses;
+        return in_array($course_id, $this->checked);
     }
+    
+    public function deleteRecords()
+    {
+        Course::whereKey($this->checked)->delete();
+        $this->checked = [];
+        session()->flash('message', 'Selected records deleted successfully.');
+    
+    }
+
 }

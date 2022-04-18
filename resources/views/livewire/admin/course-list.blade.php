@@ -44,35 +44,36 @@
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="row align-items-center">
-                                <div class="col-md-3 col-12">
+                                <div class="col-md-2 col-12">
                                     <a class="btn btn-sm btn-icon btn-3 btn-primary" href="{{route('admin.course.add')}}">
                                         <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>                             
                                         <span class="btn-inner--text">Add Course</span>
                                     </a>
                                 </div>
-                                <div class="col-md-9 col-12">
+                                <div class="col-md-10 col-12">
                                     <div class="d-md-flex w-full" style="justify-content: space-between;">
                                         <!-- Search box -->
-                                        <div class="searchbox">
+                                        <div class="searchbox" style="min-width:340px;">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                                                 </div>
-                                                <input wire:model="search" class="form-control" placeholder="Search" type="text">
+                                                <input wire:model.debounce.500ms="search" class="form-control" placeholder="Search by title, category, instructor" type="text">
                                             </div>  
                                         </div>
-                                        <div class="sorting-group d-flex">
-                                            <!-- Order By -->
-                                            <div class="orderby pr-2">
-                                                <select wire:model="orderBy" id="orderBy" class="form-control">
-                                                    <option value="id">ID</option>
-                                                    <option value="name">Name</option>
-                                                    <option value="course_description">Description</option>
-                                                    <option value="started_date">Start Date</option>
-                                                    <option value="end_date">End Date</option>
-                                                    <option value="published">Published</option>
-                                                </select>
+                                        <!-- Checked Action Dropdown -->
+                                         @if ($checked) 
+                                        <div class="dropdown ml-3">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="selectedMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Checked ({{count($checked)}})
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="selectedMenu">
+                                                <a class="dropdown-item" href="#" type="button" onclick="confirm('Are you sure you want to delete these records?') || event.stopImmediatePropagation()" wire:click="deleteRecords()">Delete</a>
+                                                <a class="dropdown-item" href="#" type="button" onclick="confirm('Do you want to export these records?') || event.stopImmediatePropagation()" wire:click="exportSelected()">Export</a>
                                             </div>
+                                        </div>
+                                        @endif
+                                        <div class="sorting-group d-flex">
                                             <!-- Order Asc -->
                                             <div class="orderasc pr-2">
                                                 <select wire:model="orderAsc" id="orderAsc" class="form-control">
@@ -101,7 +102,7 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">Sr No.</th>
+                                        <th scope="col"></th>
                                         <th scope="col">Course Title</th>
                                         <th scope="col">Category</th>
                                         <th scope="col">Instructor</th>
@@ -111,12 +112,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                           
+                     
                                     @foreach ($courses as $course)
-                                        <tr>
-                                            <td>{{ $course->id }}</td>
+                                        <tr class="@if ($this->isChecked($course->id))
+                                        table-primary
+                                        @endif">
+                                        <td><input type="checkbox" value="{{$course->id}}" wire:model="checked"></td>
                                             <td>{{ $course->name }}</td>
-                                            <td>{{ $course->category->name }}</td>
-                                            <td>{{ $course->instructor->name }}</td>
+                                            <td>{{ $course->category? $course->category->name: '-' }}</td>
+                                            <td>{{ $course->instructor? $course->instructor->name: '-' }}</td>
                                             <td>
                                                 <label class="custom-toggle">
                                                 <input type="checkbox" {{ $course->status === 1? 'checked': '' }} disabled >
@@ -144,7 +149,7 @@
                     </div>
                 </div>
                 <div class="pagination">
-                    
+                   {{ $courses->links() }}
                 </div>
 
             </div>

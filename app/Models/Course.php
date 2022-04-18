@@ -40,15 +40,6 @@ class Course extends Model
     ];
   
 
-    public static function search($search)
-    {
-        return empty($search)? static::query()
-        : static::query()->where('id', 'like', '%'. $search.'%')
-        ->orWhere('name', 'like', '%'.$search.'%')
-        ->orWhere('course_description', 'like', '%'.$search.'%')
-        ->orWhere('course_requirements', 'like', '%'.$search.'%');
-    }
-
     /**
      * Get the instructor that owns the course
      *
@@ -66,6 +57,21 @@ class Course extends Model
      */
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id');
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function($query) use ($term) {
+            $query->where('name', 'like', $term)
+            ->orWhere('short_description', 'like', $term)
+            ->orWhereHas('instructor', function($query) use ($term) {
+                $query->where('name', 'like', $term);
+            })
+            ->orWhereHas('category', function($query) use ($term) {
+                $query->where('name', 'like', $term);
+            });
+        });
     }
 }

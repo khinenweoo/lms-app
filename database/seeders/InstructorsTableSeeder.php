@@ -42,5 +42,33 @@ class InstructorsTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('instructors')->insert([
+            'name' => 'Teacher User',
+            'email' => 'teacheruser@lms.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret123'),
+            'dateofbirth' => '1994-06-20',
+            'gender' => 'male',
+            'photo' => 'default.jpg',
+            'phone' => '0912345678',
+            'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('instructors')->insert([
+            'name' => 'Teacher User2',
+            'email' => 'teacheruser2@lms.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret123'),
+            'dateofbirth' => '1994-05-06',
+            'gender' => 'male',
+            'photo' => 'default.jpg',
+            'phone' => '0912345678',
+            'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

@@ -34,9 +34,9 @@ class CreateCoursesTable extends Migration
             $table->date('enroll_close_date')->nullable();
 
             $table->tinyInteger('published')->default(0)->nullable();
-            $table->integer('featured')->default(0)->nullable();
-            $table->integer('trending')->default(0)->nullable();
-            $table->integer('popular')->default(0)->nullable();
+            $table->tinyInteger('featured')->default(0)->nullable();
+            $table->tinyInteger('trending')->default(0)->nullable();
+            $table->tinyInteger('popular')->default(0)->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');

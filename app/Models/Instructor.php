@@ -133,14 +133,26 @@ class Instructor extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public static function search($search)
+    public function scopeSearch($query, $term)
     {
-        return empty($search)? static::query()
-        : static::query()->where('id', 'like', '%'. $search.'%')
-        ->orWhere('name', 'like', '%'.$search.'%')
-        ->orWhere('email', 'like', '%'.$search.'%')
-        ->orWhere('phone', 'like', '%'.$search.'%')
-        ->orWhere('gender', 'like', '%'.$search.'%');
+        $term = "%$term%";
+        $query->where(function($query) use ($term) {
+            $query->where('name', 'like', $term)
+            ->orWhere('email', 'like', $term)
+            ->orWhere('phone', 'like', $term)
+            ->orWhere('gender', 'like', $term);
+        });
     }
+
+    /**
+     * Get all of the Courses for the Instructor
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+
 }

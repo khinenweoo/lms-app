@@ -8,7 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
-class CategoryComponent extends Component
+class CategoryList extends Component
 {
     use WithPagination;
     use WithFileUploads;
@@ -18,8 +18,7 @@ class CategoryComponent extends Component
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = 'asc';
-
-    protected $categories;
+    public $checked = [];
 
     public $category_id;
     public $name;
@@ -31,12 +30,13 @@ class CategoryComponent extends Component
     public $updateMode = false;
     public $deleteId;
     public $iteration;
-
+    
     public function render()
     {
-        $this->fetchCategories();
-        return view('livewire.admin.category-component', [
-            'categories' => $this->categories,
+        return view('livewire.admin.category-list', [
+            'categories' => Category::search(trim($this->search))
+                            ->orderBy($this->orderBy, $this->orderAsc)
+                            ->paginate($this->perPage),
         ])->layout('layouts.livewirebase');
     }
 
@@ -45,13 +45,6 @@ class CategoryComponent extends Component
         $this->resetInput();
     }
 
-    public function fetchCategories()
-    {
-        $categories =  Category::search($this->search)
-        ->orderBy($this->orderBy, $this->orderAsc)
-        ->paginate($this->perPage);
-        $this->categories = $categories;
-    }
 
     public function store()
     {
@@ -168,5 +161,19 @@ class CategoryComponent extends Component
     public function resetInput()
     {
         $this->reset('name', 'slug', 'icon', 'description', 'status');
+    }
+
+    // Check selected id is in checked array and style row with primary color
+    public function isChecked($category_id) 
+    {
+        return in_array($category_id, $this->checked);
+    }
+    
+    public function deleteRecords()
+    {
+        Category::whereKey($this->checked)->delete();
+        $this->checked = [];
+        session()->flash('message', 'Selected records deleted successfully.');
+    
     }
 }

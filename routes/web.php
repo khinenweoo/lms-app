@@ -8,13 +8,14 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Instructor\InstructorController;
 use App\Http\Controllers\HomeController;
 
-use App\Http\Livewire\Admin\CategoryComponent;
+use App\Http\Livewire\Admin\CategoryList;
 use App\Http\Livewire\Admin\InstructorList;
 use App\Http\Livewire\Admin\UpdateInstructor;
 use App\Http\Livewire\Admin\CourseList;
 use App\Http\Livewire\Admin\AddInstructor;
 use App\Http\Livewire\Admin\AddCourse;
 use App\Http\Livewire\Admin\EditCourse;
+use App\Http\Livewire\Admin\LessonList;
 
 use App\Http\Livewire\Admin\AdminProfile;
 use App\Http\Livewire\Admin\UpdateProfile;
@@ -80,7 +81,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 
 		 /*--------------- CATEGORIES ------------------*/
-		Route::get('/categories', CategoryComponent::class)->name('categories');
+		Route::get('/categories', CategoryList::class)->name('categories');
 
 		 /*--------------- INSTRUCTORS ------------------*/
 		Route::get('/instructors', InstructorList::class)->name('instructors');
@@ -92,12 +93,15 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		Route::get('/courses', CourseList::class)->name('courses');
 		Route::get('/course/create', AddCourse::class)->name('course.add');
 		Route::get('/course/edit/{course_slug}', EditCourse::class)->name('course.edit');
+
         /*--------------- STUDENTS ------------------*/
 		Route::get('/students', StudentList::class)->name('students');
 		Route::get('/student/edit/{student_id}', EditStudent::class)->name('student.edit');
 
+ 		/*--------------- LESSONS ------------------*/
+		 Route::get('/lessons', LessonList::class)->name('lessons');
 
-        // Route::get('/students/{user_id}/show', ViewRegStudent::class)->name('students.view');
+
 		Route::get('/enrolledstudents', EnrolledStudent::class)->name('enrolledstudents');
 	});
 });

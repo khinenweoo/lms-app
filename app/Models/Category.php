@@ -48,11 +48,11 @@ class Category extends Model
         return $this->created_at->format('m/d/Y');
     }
 
-    public static function search($search)
+    public function scopeSearch($query, $term)
     {
-        return empty($search)? static::query()
-        : static::query()->where('id', 'like', '%'. $search.'%')
-        ->orWhere('name', 'like', '%'.$search.'%')
-        ->orWhere('created_at', 'like', '%'.$search.'%');
+        $term = "%$term%";
+        $query->where(function($query) use ($term) {
+            $query->where('name', 'like', $term);
+        });
     }
 }
