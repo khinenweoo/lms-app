@@ -14,10 +14,7 @@
                                         <a href="{{route('admin.dashboard')}}" style="font-size:12px;color:#828bb2;">Dashboard</a>
                                     </div>
                                     <div class="breadcrumb-item">
-                                        <a href="{{route('admin.instructors')}}" style="font-size:12px;color:#828bb2;">Instructors</a>
-                                    </div>
-                                    <div class="breadcrumb-item">
-                                        <a href="{{route('admin.instructors')}}" class="text-default" style="font-size:12px;">Instructor List</a>
+                                        <a href="{{route('admin.instructors')}}" class="text-default" style="font-size:12px;">Instructors</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +76,7 @@
                                                 <select wire:model="orderBy" id="orderBy" class="form-control">
                                                     <option value="id">ID</option>
                                                     <option value="name">Name</option>
-                                                    <option value="email">Email Address</option>
+                                                    <option value="email">Email</option>
                                                     <option value="phone">Phone</option>
                                                     <option value="gender">Gender</option>
                                                 </select>

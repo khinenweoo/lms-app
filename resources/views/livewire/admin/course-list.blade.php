@@ -14,10 +14,7 @@
                                         <a href="{{route('admin.dashboard')}}" style="font-size:12px;color:#828bb2;">Dashboard</a>
                                     </div>
                                     <div class="breadcrumb-item">
-                                        <a href="{{route('admin.courses')}}" style="font-size:12px;color:#828bb2;">Courses</a>
-                                    </div>
-                                    <div class="breadcrumb-item">
-                                        <a href="{{route('admin.courses')}}" class="text-default" style="font-size:12px;">Course List</a>
+                                        <a href="{{route('admin.courses')}}" class="text-default" style="font-size:12px;">Courses</a>
                                     </div>
                                 </div>
                             </div>
