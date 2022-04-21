@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([InstructorsTableSeeder::class]);
         $this->call([CategoriesSeeder::class]);
 
-        \App\Models\Course::factory(20)->create();
+        \App\Models\Course::factory(30)->create();
         \App\Models\Lesson::factory(40)->create();
     }
 }

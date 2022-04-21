@@ -86,20 +86,37 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#instructor-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-instructor">
-                    <i class="fas fa-users text-green"></i> {{ __('Instructors') }}
+                    <a class="nav-link" href="{{ route('instructor.categories') }}">
+                        <i class="ni ni-folder-17 text-green"></i> {{ __('Categories') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#course-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                        <i class="ni ni-books text-green"></i>
+                        <span class="nav-link-text">{{ __('Courses Management') }}</span>
                     </a>
 
-                    <div class="collapse" id="instructor-nav">
+                    <div class="collapse" id="course-nav">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.instructors') }}">
-                                    {{ __('All Instructors') }}
+                                <a class="nav-link" href="{{route('instructor.courses')}}">
+                                    {{ __('My Courses') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.instructor.add')}}">
-                                    {{ __('Add Instructor') }}
+                                <a class="nav-link" href="{{route('admin.lessons')}}">
+                                    {{ __('Lessons') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.lessons')}}">
+                                    {{ __('Tests') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.lessons')}}">
+                                    {{ __('Quiz') }}
                                 </a>
                             </li>
                         </ul>
@@ -114,54 +131,8 @@
                     <div class="collapse" id="student-nav">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.students') }}">
-                                    {{ __('All Students') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.enrolledstudents') }}">
                                     {{ __('Enrolled Student') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#course-nav" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
-                        <i class="ni ni-books text-green"></i>
-                        <span class="nav-link-text">{{ __('Courses Management') }}</span>
-                    </a>
-
-                    <div class="collapse" id="course-nav">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.categories')}}">
-                                    {{ __('Manage Categories') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.courses')}}">
-                                    {{ __('All Courses') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    {{ __('Course Level') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    {{ __('Active Courses') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">
-                                    {{ __('Pending Courses') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.lessons')}}">
-                                    {{ __('Lessons') }}
                                 </a>
                             </li>
                         </ul>
@@ -174,7 +145,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.profile') }}">
-                    <i class="fas fa-pencil-alt text-green"></i> {{ __('Blog') }}
+                    <i class="ni ni-chart-pie-35 text-green"></i> {{ __('Reports') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.profile') }}">
+                    <i class="ni ni-satisfied text-green"></i> {{ __('Reviews') }}
                     </a>
                 </li>
 

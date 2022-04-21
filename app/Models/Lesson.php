@@ -10,6 +10,9 @@ class Lesson extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'lessons';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'title',
         'slug',

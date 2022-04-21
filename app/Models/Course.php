@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
     use SoftDeletes, HasFactory;
-
-    const TABLE = 'courses';
-    protected $table = self::TABLE;
     
     protected $primaryKey = 'id';
 
     public $fillable = [
+        'category_id',
+        'instructor_id',
         'name',
         'slug',
         'short_description',
@@ -24,8 +24,6 @@ class Course extends Model
         'course_requirements',
         'course_outcomes',
         'cover_image',
-        'category_id',
-        'instructor_id',
         'is_free',
         'course_fee',
         'duration_length',
@@ -58,6 +56,11 @@ class Course extends Model
     public function category()
     {
         return $this->belongsTo(Category::class,'category_id');
+    }
+
+    public function scopeOfTeacher($query)
+    {
+        return $query->where('instructor_id', Auth::user()->id);
     }
 
     public function scopeSearch($query, $term)

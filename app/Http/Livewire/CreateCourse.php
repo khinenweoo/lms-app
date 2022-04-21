@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -8,8 +8,9 @@ use App\Models\Course;
 use App\Models\Category;
 use App\Models\Instructor;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
-class AddCourse extends Component
+class CreateCourse extends Component
 {
     use WithFileUploads;
 
@@ -22,9 +23,16 @@ class AddCourse extends Component
     public $totalSteps = 3;
     public $currentStep = 1;
 
+    public $instructor;
+    public $created_by;
+
     public function mount()
     {
         $this->currentStep = 1;
+        if(Auth::guard('instructor')->check()){
+            $this->instructor = auth('instructor')->user()->id;
+            $this->created_by = 'instructor';
+        }
     }
 
     public function render()
@@ -34,7 +42,7 @@ class AddCourse extends Component
         // Get all instructors
         $instructors = Instructor::where('status', '=', 1)->get();
 
-        return view('livewire.admin.add-course', [
+        return view('livewire.create-course', [
             'instructors' => $instructors,
             'categories' => $categories,
         ])->layout('layouts.livewirebase');
@@ -61,7 +69,6 @@ class AddCourse extends Component
                 'is_free' => ['required', 'max:1'],
                 'course_fee' => ['nullable', 'numeric'],
                 'category_id' => ['required', 'numeric', 'exists:categories,id'],
-                'instructor_id' => ['required', 'numeric', 'exists:instructors,id'],
                 'duration_length' => ['nullable', 'string', 'max:20'],
             ]);         
         }
@@ -75,7 +82,6 @@ class AddCourse extends Component
     */
     public function store() 
     {
-
         
         if($this->slug == "" || $this->slug == null) {
             $slug = Str::slug($this->name);
@@ -89,7 +95,13 @@ class AddCourse extends Component
             $cover_image_file = $this->photoUpload($this->cover_image);
         }
 
+        if($this->instructor != null) {
+            $this->instructor_id = $this->instructor;
+        }
+
         $course = new Course();
+        $course->category_id = $this->category_id;
+        $course->instructor_id = $this->instructor_id;
         $course->name = $this->name;
         $course->slug = $slug;
         $course->short_description = $this->short_description;
@@ -97,8 +109,6 @@ class AddCourse extends Component
         $course->course_requirements = $this->course_requirements;
         $course->course_outcomes = $this->course_outcomes;
         $course->cover_image = $cover_image_file;
-        $course->category_id = $this->category_id;
-        $course->instructor_id = $this->instructor_id;
         $course->is_free = $this->is_free;
         $course->course_fee = $this->course_fee;
         $course->duration_length = $this->duration_length;
@@ -110,14 +120,17 @@ class AddCourse extends Component
         $course->trending = $this->trending == 1? 1:0;
         $course->popular = $this->popular == 1? 1:0;
         $course->status = $this->status;
+        $course->created_by = $this->created_by == 'instructor'? 'instructor':'admin';
         $course->save();
 
-        if($course){
-            session()->flash('message', 'New course added.');
-        
+        session()->flash('message', 'New course added.');
+            
+        if($this->instructor != null) {
+            return redirect()->route('instructor.courses');
+        }else{
             return redirect()->route('admin.courses');
         }
-
+            
     }
 
     public function increaseStep()
@@ -151,5 +164,6 @@ class AddCourse extends Component
 
         return $file_name;
     }
+
 
 }

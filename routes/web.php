@@ -11,10 +11,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Admin\CategoryList;
 use App\Http\Livewire\Admin\InstructorList;
 use App\Http\Livewire\Admin\UpdateInstructor;
-use App\Http\Livewire\Admin\CourseList;
+
 use App\Http\Livewire\Admin\AddInstructor;
-use App\Http\Livewire\Admin\AddCourse;
-use App\Http\Livewire\Admin\EditCourse;
 use App\Http\Livewire\Admin\LessonList;
 
 use App\Http\Livewire\Admin\AdminProfile;
@@ -23,6 +21,11 @@ use App\Http\Livewire\Admin\StudentList;
 use App\Http\Livewire\Admin\Editstudent;
 use App\Http\Livewire\Admin\EnrolledStudent;
 
+use App\Http\Livewire\Instructor\CourseIndex;
+
+use App\Http\Livewire\CourseList;
+use App\Http\Livewire\CreateCourse;
+use App\Http\Livewire\Admin\EditCourse;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +94,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 		/*--------------- COURSES ------------------*/
 		Route::get('/courses', CourseList::class)->name('courses');
-		Route::get('/course/create', AddCourse::class)->name('course.add');
+		Route::get('/course/create', CreateCourse::class)->name('course.add');
 		Route::get('/course/edit/{course_slug}', EditCourse::class)->name('course.edit');
 
         /*--------------- STUDENTS ------------------*/
@@ -119,5 +122,15 @@ Route::prefix('instructor')->name('instructor.')->group(function(){
 	Route::middleware(['auth:instructor', 'prevent-back-history'])->group(function(){
 		Route::view('/dashboard', 'back.instructor.dashboard')->name('dashboard');
 		Route::post('/logout', [InstructorController::class,'logout'])->name('logout');
+
+		 /*--------------- CATEGORIES ------------------*/
+		Route::get('/categories', CategoryList::class)->name('categories');
+
+		/*--------------- COURSES ------------------*/
+		Route::get('/mycourses', CourseIndex::class)->name('courses');
+		Route::get('/course/create', CreateCourse::class)->name('course.add');
+
+		/*--------------- LESSONS ------------------*/
+
 	});
 });

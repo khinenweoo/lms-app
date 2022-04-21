@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -17,12 +17,13 @@ class CourseList extends Component
     public $orderBy = 'id';
     public $orderAsc = 'asc';
     protected $courses;
+    public $deleteId;
 
     public $checked = [];
 
     public function render()
     {
-        return view('livewire.admin.course-list', [
+        return view('livewire.course-list', [
             'courses' => Course::with(['category','instructor'])
             ->search(trim($this->search))
             ->orderBy($this->orderBy, $this->orderAsc)
@@ -47,6 +48,19 @@ class CourseList extends Component
     {
         return (new CoursesExport($this->checked))->download('courses.xlsx');
 
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->deleteId = $id;
+    }
+
+    public function delete()
+    {
+        if ($this->deleteId) {
+            Course::find($this->deleteId)->delete();
+            session()->flash('message', 'Course deleted.');
+        }
     }
 
 }

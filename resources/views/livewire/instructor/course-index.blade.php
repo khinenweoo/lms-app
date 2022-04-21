@@ -42,7 +42,7 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-md-2 col-12">
-                                    <a class="btn btn-sm btn-icon btn-3 btn-primary" href="{{route('admin.course.add')}}">
+                                    <a class="btn btn-sm btn-icon btn-3 btn-primary" href="{{route('instructor.course.add')}}">
                                         <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>                             
                                         <span class="btn-inner--text">Add Course</span>
                                     </a>
@@ -102,7 +102,6 @@
                                         <th scope="col"></th>
                                         <th scope="col">Course Title</th>
                                         <th scope="col">Category</th>
-                                        <th scope="col">Instructor</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Lessons</th>
                                         <th scope="col">Actions</th>
@@ -111,14 +110,13 @@
                                 <tbody>
                            
                      
-                                    @foreach ($courses as $course)
+                                    @forelse ($courses as $course)
                                         <tr class="@if ($this->isChecked($course->id))
                                         table-primary
                                         @endif">
                                         <td><input type="checkbox" value="{{$course->id}}" wire:model="checked"></td>
                                             <td>{{ $course->name }}</td>
                                             <td>{{ $course->category? $course->category->name: '-' }}</td>
-                                            <td>{{ $course->instructor? $course->instructor->name: '-' }}</td>
                                             <td>
                                                 <label class="custom-toggle">
                                                 <input type="checkbox" {{ $course->status === 1? 'checked': '' }} disabled >
@@ -132,23 +130,46 @@
                                                 <a href="{{route('admin.course.edit',['course_slug' => $course->slug])}}" class="btn btn-primary btn-sm" title="Edit Course" style="border-radius:14px;padding:.35rem .5rem;">
                                                 <i class="fa fa-edit"></i>  
                                                 </a>
-                                                <button type="button" wire:click.prevent="" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Course" style="border-radius:14px;padding:.35rem .5rem;">
+                                                <button type="button" wire:click.prevent="confirmDelete({{$course->id}})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Course" style="border-radius:14px;padding:.35rem .5rem;">
                                                 <i class="fa fa-trash-alt"></i>
                                                 </button> 
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                        <td colspan="6" class="text-center">  No course created yet .. </td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
-
                         </div>
-
                     </div>
                 </div>
                 <div class="pagination">
-                   {{ $courses->links() }}
+                    @if(!empty($courses))
+                    {{ $courses->links() }}
+                    @endif
                 </div>
-
+                <!-- Delete Confirmation Modal -->       
+                <div wire:ignore.self class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true close-btn">×</span>
+                                    </button>
+                                </div>
+                            <div class="modal-body">
+                                    <p>Are you sure you want to delete? Course contains data.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                                    <button type="button" wire:click.prevent="delete()" class="btn btn-danger close-modal" data-dismiss="modal">Yes, Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <!-- end Modal -->
             </div>
         </div>
     </div>

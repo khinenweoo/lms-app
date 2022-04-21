@@ -15,6 +15,8 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('category_id');
+            $table->bigInteger('instructor_id')->unsigned();
             $table->string('name')->unique();
             $table->string('slug');
             $table->string('short_description');
@@ -22,9 +24,6 @@ class CreateCoursesTable extends Migration
             $table->longText('course_requirements')->nullable();
             $table->longText('course_outcomes')->nullable();
             $table->string('cover_image')->nullable();
-
-            $table->unsignedInteger('category_id');
-            $table->bigInteger('instructor_id')->unsigned();
 
             $table->tinyInteger('is_free')->default(0)->nullable();
             $table->decimal('course_fee', 15, 2)->nullable();
@@ -42,6 +41,7 @@ class CreateCoursesTable extends Migration
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
 
             $table->enum('status', ['enabled', 'disabled'])->default('disabled');
+            $table->enum('created_by', ['admin', 'instructor'])->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->index(['deleted_at']);
