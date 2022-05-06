@@ -6,7 +6,7 @@ use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Instructor\InstructorController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChapterController;
 
 use App\Http\Livewire\Admin\CategoryList;
 use App\Http\Livewire\Admin\InstructorList;
@@ -22,6 +22,7 @@ use App\Http\Livewire\Admin\Editstudent;
 use App\Http\Livewire\Admin\EnrolledStudent;
 
 use App\Http\Livewire\Instructor\CourseIndex;
+use App\Http\Livewire\Instructor\CourseDetails;
 
 use App\Http\Livewire\CourseList;
 use App\Http\Livewire\CreateCourse;
@@ -46,7 +47,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'web'], function () {
 	/*--------------- FRONT ROUTES ------------------*/
-    Route::get('/', 'App\Http\Controllers\ViewHomepageController@index')->name('home');
+    Route::get('/', 'App\Http\Controllers\WelcomepageController@index')->name('home');
 });
 
 
@@ -81,7 +82,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
 		Route::post('/logout', [AdminController::class,'logout'])->name('logout');
         Route::get('/profile', AdminProfile::class)->name('profile');
         Route::get('/edit/{admin_id}', UpdateProfile::class)->name('edit');
-
 
 		 /*--------------- CATEGORIES ------------------*/
 		Route::get('/categories', CategoryList::class)->name('categories');
@@ -129,8 +129,10 @@ Route::prefix('instructor')->name('instructor.')->group(function(){
 		/*--------------- COURSES ------------------*/
 		Route::get('/mycourses', CourseIndex::class)->name('courses');
 		Route::get('/course/create', CreateCourse::class)->name('course.add');
+		Route::get('/course-details/{course_id}', CourseDetails::class)->name('course.details');
 
-		/*--------------- LESSONS ------------------*/
+		/*--------------- CHAPTER ------------------*/
+		Route::resource('chapters', ChapterController::class);
 
 	});
 });

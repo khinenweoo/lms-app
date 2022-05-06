@@ -20,7 +20,7 @@
 </section>
 
 <!-- Course Section Starts -->
-<section class="course-page_section">
+<section class="course_section">
     <div class="course-page-content">
         <div class="container">
 

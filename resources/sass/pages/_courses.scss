@@ -167,7 +167,7 @@
     animation: rotate 20s normal linear infinite;
 }
 
-.course-page_section {
+.course_section {
     font-family: "Poppins", sans-serif;
     .course-page-content {
         padding-top: 120px;
@@ -218,8 +218,8 @@
             }
         }
     }
-    .row {
-        .course-single-item {
+
+    .course-single-item {
             background-color: #effefb;
             padding: 10px;
             -webkit-transition: all 0.3s ease-in;
@@ -314,11 +314,11 @@
                     }
                 }
             }
-        }
-        .course-single-item:hover {
-            box-shadow: 0 20px 40px #eaeaea;
-          }
     }
+    .course-single-item:hover {
+            box-shadow: 0 20px 40px #eaeaea;
+    }
+
     .template-pagination {
         margin-top:20px;
         ul {

@@ -36,8 +36,8 @@
                         </div>
                 @endif
             </div>
-            <div class="row mt-5">
-                <div class="col-xl-12 mb-5">
+            <div class="row mt-3">
+                <div class="col-xl-12 mb-3">
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="row align-items-center">
@@ -62,7 +62,7 @@
                                          @if ($checked) 
                                         <div class="dropdown ml-3">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="selectedMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Checked ({{count($checked)}})
+                                                Action Selected ({{count($checked)}})
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="selectedMenu">
                                                 <a class="dropdown-item" href="#" type="button" onclick="confirm('Are you sure you want to delete these records?') || event.stopImmediatePropagation()" wire:click="deleteRecords()">Delete</a>
@@ -95,64 +95,66 @@
 
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Course Title</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Lessons</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                           
-                     
-                                    @forelse ($courses as $course)
-                                        <tr class="@if ($this->isChecked($course->id))
-                                        table-primary
-                                        @endif">
-                                        <td><input type="checkbox" value="{{$course->id}}" wire:model="checked"></td>
-                                            <td>{{ $course->name }}</td>
-                                            <td>{{ $course->category? $course->category->name: '-' }}</td>
-                                            <td>
-                                                <label class="custom-toggle">
-                                                <input type="checkbox" {{ $course->status === 1? 'checked': '' }} disabled >
-                                                <span class="custom-toggle-slider rounded-circle"></span>
-                                                </label>
-                                            </td>
-                                            <!-- enroll close date column -->
-                                            <!-- <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $course->enroll_close_date )->format('d/M/Y') }}</td> -->
-                                            <td>Lessons</td>
-                                            <td>
-                                                <a href="{{route('admin.course.edit',['course_slug' => $course->slug])}}" class="btn btn-primary btn-sm" title="Edit Course" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="fa fa-edit"></i>  
-                                                </a>
-                                                <button type="button" wire:click.prevent="confirmDelete({{$course->id}})" data-toggle="modal" data-target="#modal-delete" class="btn btn-danger btn-sm" title="Delete Course" style="border-radius:14px;padding:.35rem .5rem;">
-                                                <i class="fa fa-trash-alt"></i>
-                                                </button> 
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                        <td colspan="6" class="text-center">  No course created yet .. </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="course_section">
+                <div class="row mb-4">
+                    @foreach ($courses as $course)
+                    <div class="col-lg-4 col-md-6 col-12 mb-4">
+                        <input type="checkbox" wire:model="checked" value="{{$course->id}}" class="checkbox position-absolute" style="z-index:99;left:40px;right:auto;top:-8px;">
+                        <!-- card -->
+                        <div class="card course-single-item @if ($this->isChecked($course->id)) bg-default @endif">
+                            <div class="course-image">
+                                <img class="card-img-top" src="{{ asset('storage/courses/'.$course->cover_image) }}" alt="{{$course->name}}">
+                            </div>
+                            <div class="card-img-block">
+                                <h5 class="course-type">{{$course->is_free == 1?'Free':'Paid'}}</h5>
+                            </div>
+                            <div class="card-body course-content">
+                                <h4 class="card-title mt-2">{{$course->name}}</h4>
+                                <p>
+                                <li class="mt-3" style="list-style-type:none;">Category <span class="value-align">{{ $course->category? $course->category->name: '-' }}</span></li>
+                                <li class="mt-3" style="list-style-type:none;">Featured <span class="value-align">{{$course->featured === 1? 'Yes':'No'}}</span></li>
+                                <li class="mt-3" style="list-style-type:none;">Status <span class="value-align">{{$course->status === 'enabled'? 'Active':'Inactive'}}</span></li>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row mt-3 mb-3">
+                                    <div class="col-2"></div>
+                                    <div class="col-2">
+                                        <a href="{{route('instructor.course.details',['course_id' => $course->id])}}" class="" title="Edit Course">
+                                            <i class="fa fa-edit"></i>  
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{{route('instructor.course.details',['course_id' => $course->id])}}" class="" title="View Course" >
+                                            <i class="fa fa-eye"></i>  
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a wire:click.prevent="confirmDelete({{$course->id}})" data-toggle="modal" data-target="#modal-delete" class="" title="Delete Course" >
+                                            <i class="fa fa-trash-alt" style="color:#5e72e4;"></i>
+                                        </a> 
+                                    </div>
+                                    <div class="col-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card end -->
+                    </div>
+                    @endforeach
+                </div>
+
                 <div class="pagination">
                     @if(!empty($courses))
                     {{ $courses->links() }}
                     @endif
                 </div>
-                <!-- Delete Confirmation Modal -->       
+            </div>
+              <!-- Delete Confirmation Modal -->       
                 <div wire:ignore.self class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                    <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -167,10 +169,10 @@
                                     <button type="button" wire:click.prevent="delete()" class="btn btn-danger close-modal" data-dismiss="modal">Yes, Delete</button>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                 </div>
                 <!-- end Modal -->
-            </div>
+
         </div>
     </div>
 </div>

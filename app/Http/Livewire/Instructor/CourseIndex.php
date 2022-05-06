@@ -25,7 +25,7 @@ class CourseIndex extends Component
  
         // $instructorId = auth('instructor')->user()->id;
         // $courses = Course::where('instructor_id', $instructorId)->get();
-        $courses = Course::ofTeacher()->get();
+       // $courses = Course::ofTeacher()->get();
 
         return view('livewire.instructor.course-index', [
             'courses' =>  Course::ofTeacher()->with(['category','instructor'])

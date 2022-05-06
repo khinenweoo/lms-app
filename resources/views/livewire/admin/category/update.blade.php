@@ -15,7 +15,6 @@
                         <!-- ID input -->
                         <input type="hidden" wire:model="category_id">
 
-                        <input type="hidden" >
                         <!-- Name input -->
                         <label for="name">Name</label>
                         <input wire:model="name" type="text" placeholder="Enter Name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">

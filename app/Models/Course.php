@@ -58,6 +58,16 @@ class Course extends Model
         return $this->belongsTo(Category::class,'category_id');
     }
 
+    /**
+     * Get all of the chapters for the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class, 'course_id');
+    }
+
     public function scopeOfTeacher($query)
     {
         return $query->where('instructor_id', Auth::user()->id);
