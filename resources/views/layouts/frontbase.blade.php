@@ -23,11 +23,11 @@
         <link type="text/css" href="{{ asset('frontend/assets/css/animated-headline.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('frontend/assets/css/magnific-popup.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('frontend/assets/css/fontawesome.min.css') }}" rel="stylesheet">
-        <link type="text/css" href="{{ asset('frontend/assets/css/themify-icons.css') }}" rel="stylesheet">
+        <!-- <link type="text/css" href="{{ asset('frontend/assets/css/themify-icons.css') }}" rel="stylesheet"> -->
         <link type="text/css" href="{{ asset('frontend/assets/css/slick.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('frontend/assets/css/nice-select.css') }}" rel="stylesheet">
-        <link type="text/css" href="{{ asset('frontend/assets/css/icofont.min.css') }}" rel="stylesheet">
-        <link type="text/css" href="{{ asset('frontend/assets/css/icofont.css') }}" rel="stylesheet">
+        <!-- <link type="text/css" href="{{ asset('frontend/assets/css/icofont.min.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{ asset('frontend/assets/css/icofont.css') }}" rel="stylesheet"> -->
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{{asset('css/app.css')}}">

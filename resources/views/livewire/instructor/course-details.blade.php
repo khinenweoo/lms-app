@@ -55,6 +55,8 @@
                         <div class="card shadow">
                             <div class="card-body">
                                 <div class="tab-content" id="myTabContent">
+
+                                    <!-- Course Chapter Start -->
                                     <div class="tab-pane fade show active" id="course-chapters" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
                                        
                                             <div class="card-header p-0 pb-3">
@@ -158,9 +160,12 @@
                                             </div>
 
                                     </div>
+                                    <!-- Course Chapter End -->
+                                    <!-- Course Detail Start -->
                                     <div class="tab-pane fade" id="course-details" role="tabpanel" aria-labelledby="course-details-tab">
                                         <p class="description">Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
                                     </div>
+                                    <!-- Course Detail End -->
                                     <div class="tab-pane fade" id="course-lessons" role="tabpanel" aria-labelledby="course-lessons-tab">
                                         <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
                                     </div>
